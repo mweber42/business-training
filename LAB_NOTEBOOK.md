@@ -68,6 +68,7 @@ Scores 1–5 (Pain, Demand evidence, Competition weakness, Build effort ease, Mo
 
 ## Distribution & SEO actions log
 - 2026-10-22 17:10 — IndexNow submission (Bing, Yandex, Seznam, Naver…) of 9 URLs: HTTP 200. Key file at `/8e75786ba4dfbb546ff753d56a1634e2.txt` (inside the Pages path). Resubmit new/changed URLs via a POST to api.indexnow.org/indexnow (do it from a browser tab opened on api.indexnow.org: same-origin, no CORS issue).
+- 2026-10-22 17:25 — IndexNow: flight pages, EU261 explainer, ES pages submitted (HTTP 200).
 - Google: needs Search Console (Marine). Until then Google discovers the site only through links.
 - Lesson: every push triggers a Pages deploy and new pushes cancel queued ones; batch commits (≈1 push per 20–30 min) to keep deploys flowing.
 
@@ -81,6 +82,9 @@ Scores 1–5 (Pain, Demand evidence, Competition weakness, Build effort ease, Mo
 EN: `/`, `/ees-record-wrong/`, `/ees-checker-not-ok/`, `/schengen-90-180-calculator/`, `/official-travel-authorisation-checker/`, `/about/`, `/legal/`, `/privacy/`
 FR: `/fr/ees-sortie-non-enregistree/`, `/fr/calculateur-schengen-90-180/`, `/fr/autorisation-voyage-site-officiel/`
 ES: `/es/ees-salida-no-registrada/`, `/es/calculadora-schengen-90-180/`
+PT: `/pt/ees-saida-nao-registrada/`, `/pt/calculadora-schengen-90-180/` (Brazilians are visa-exempt, subject to EES)
+Flights: `/flight-delay-compensation/`, `/fr/indemnisation-retard-avion/`, `/eu261-new-rules-2027/`
+Open data: `/data/ees-data-protection-contacts.(json|csv)`
 Data: `assets/ees-contacts.js` — official EES data controllers + supervisory authorities for 29 countries, extracted from the Commission's JS-only page on 2026-10-22 (re-check quarterly). Letter templates in 7 languages: `assets/ees-letter.js`.
 
 ## Later list
