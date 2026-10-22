@@ -10,7 +10,7 @@ Plainsight Lab is an experiment run autonomously by Claude (an AI model by Anthr
 
 | Tool | What it does |
 |---|---|
-| [EES record wrong? Correction kit](https://mweber42.github.io/business-training/ees-record-wrong/) | Missing exit, wrong date, or a false overstay in the EU Entry/Exit System: step-by-step guide and an Article 52 (Regulation (EU) 2017/2226) access & rectification letter generator, in English or French. |
+| [EES record wrong? Correction kit](https://mweber42.github.io/business-training/ees-record-wrong/) | Missing exit, wrong date, or a false overstay in the EU Entry/Exit System: step-by-step guide and an Article 52 (Regulation (EU) 2017/2226) access & rectification letter generator in 7 languages, with the official authority contacts for all 29 EES countries. |
 | [Schengen 90/180 calculator](https://mweber42.github.io/business-training/schengen-90-180-calculator/) | Counts trips from **before and after** EES (10 April 2026) — which the official EU checker can't — shows days left, latest exit date and earliest date for your next trip. |
 
 Everything runs in the browser. No accounts, no tracking cookies, no data sent anywhere.

@@ -44,7 +44,7 @@
 <main id="main"><div class="wrap">
   <span class="tag">Free kit · nothing leaves your device</span>
   <h1>EES says you overstayed, or an exit wasn't recorded? Here's how to fix it</h1>
-  <p class="lead">The Entry/Exit System sometimes misses a crossing or records the wrong date. A missing exit does not fix itself: it ends up flagged as a possible overstay. You have a legal right to see your record and have it corrected. This kit writes the request for you.</p>
+  <p class="lead">The Entry/Exit System sometimes misses a crossing or records the wrong date. A missing exit does not fix itself: it ends up flagged as a possible overstay. You have a legal right to see your record and have it corrected. This kit writes the request for you, in English, French, German, Spanish, Italian, Dutch or Portuguese, addressed to the right authority.</p>
 
   <div class="alert warn"><strong>Travelling soon?</strong> Carry your evidence (tickets, boarding passes, bookings) and a printed copy of your request. At the border, state the disputed crossing (date, place, direction) and ask the officer to check the EES record itself. If you are refused entry, ask for the decision in writing.</div>
 
@@ -88,7 +88,7 @@
         <div><label for="country">Country you are writing to</label>
           <select id="country"></select>
           <p class="hint">Usually the country whose border made or missed the record.</p></div>
-        <div><label for="lang">Letter language</label><select id="lang"><option value="en">English</option><option value="fr">Français</option></select></div>
+        <div><label for="lang">Letter language</label><select id="lang"><option value="en">English</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="es">Español</option><option value="it">Italiano</option><option value="nl">Nederlands</option><option value="pt">Português</option></select><p class="hint">Authorities usually accept English; their own language can speed things up.</p></div>
       </div>
 
       <div id="contact" class="alert ok" aria-live="polite"></div>
@@ -166,6 +166,7 @@
 
 <script src="../assets/schengen.js"></script>
 <script src="../assets/ees-contacts.js"></script>
+<script src="../assets/ees-letter.js"></script>
 <script>
 (function(){
   var S = window.Schengen, $ = function(id){return document.getElementById(id);};
@@ -186,7 +187,7 @@
     ? trips.length+' trip(s) found in your <a href="../schengen-90-180-calculator/">90/180 calculator</a> on this device. They will be added as a chronology. <label style="font-weight:400;display:inline-flex;gap:6px;align-items:center"><input type="checkbox" id="use-trips" checked style="width:auto;min-height:0"> include them</label>'
     : 'Tip: add your trips in the <a href="../schengen-90-180-calculator/">90/180 calculator</a> first (on this device) and they will be added to your request as a dated chronology.';
 
-  try { if (new URLSearchParams(location.search).get('lang')==='fr') $('lang').value='fr'; } catch(e){}
+  try { var ql=new URLSearchParams(location.search).get('lang'); if (ql && window.EESLetter.LANGS.indexOf(ql)>=0) $('lang').value=ql; } catch(e){}
   var CT = window.EESContacts.CONTACTS;
   function ctrl(){ var c = CT[$('country').value]; if(!c) return null; var i = +($('ctrl') && $('ctrl').value || 0); return c.c[i] || c.c[0]; }
   function showContact(){
@@ -206,79 +207,21 @@
   function d(iso, lang){ var n=S.toDay(iso); return n===null ? '[date]' : S.fmt(n, lang==='fr'?'fr-FR':'en-GB'); }
 
   function build(){
-    var L = v('lang'), fr = L==='fr', p = v('problem'), country = v('country');
-    var today = S.fmt(S.todayDay(), fr?'fr-FR':'en-GB');
-    var name = v('name')||(fr?'[Nom complet]':'[Full name]');
-    var lines = [];
-    lines.push(name); if (v('addr')) lines.push(v('addr')); if (v('email')) lines.push(v('email'));
-    lines.push('');
-    var ct = ctrl();
-    if (ct) { lines.push((fr?'À : ':'To: ')+ct.n); lines.push(ct.a); }
-    else lines.push(fr ? 'À l’autorité compétente en matière de protection des données EES — '+(FR[country]||country) : 'To: Competent authority for EES data protection matters — '+country);
-    lines.push(fr ? 'Fait le '+today : 'Date: '+today);
-    lines.push('');
-    lines.push(fr ? 'Objet : Demande d’accès et de rectification de mes données dans le système d’entrée/sortie (EES) — article 52 du règlement (UE) 2017/2226'
-                  : 'Subject: Request for access to and rectification of my data in the Entry/Exit System (EES) — Article 52 of Regulation (EU) 2017/2226');
-    lines.push('');
-    lines.push(fr ? 'Madame, Monsieur,' : 'Dear Sir or Madam,');
-    lines.push('');
-    lines.push(fr ? 'J’exerce par la présente les droits que me confère l’article 52 du règlement (UE) 2017/2226 ainsi que les articles 15 et 16 du règlement (UE) 2016/679 (RGPD).'
-                  : 'I am writing to exercise my rights under Article 52 of Regulation (EU) 2017/2226 and Articles 15 and 16 of Regulation (EU) 2016/679 (GDPR).');
-    lines.push('');
-    lines.push(fr ? '1. Identification' : '1. Identification');
-    lines.push((fr?'Nom : ':'Name: ')+name);
-    lines.push((fr?'Date de naissance : ':'Date of birth: ')+(v('dob')?d(v('dob'),L):'[ ]'));
-    lines.push((fr?'Nationalité : ':'Nationality: ')+(v('nat')||'[ ]'));
-    lines.push((fr?'Passeport n° : ':'Passport number: ')+(v('ppn')||'[ ]')+(fr?', délivré par : ':', issued by: ')+(v('ppc')||'[ ]'));
-    lines.push('');
-    lines.push(fr ? '2. Demande d’accès' : '2. Request for access');
-    lines.push(fr ? 'Je vous prie de me communiquer une copie de l’ensemble des données me concernant enregistrées dans l’EES, y compris mon dossier individuel, toutes les fiches d’entrée/sortie et, le cas échéant, toute fiche de refus d’entrée, ainsi que l’indication de l’État membre ayant introduit chacune de ces données.'
-                  : 'Please provide me with a copy of all data recorded about me in the EES, including my individual file, all entry/exit records and any refusal of entry record, together with the Member State that entered each of them.');
-    if (p !== 'access') {
-      lines.push('');
-      lines.push(fr ? '3. Demande de rectification / complément' : '3. Request for rectification / completion');
-      var cd = d(v('c-date'),L), dir = v('c-dir'), place = v('c-place')||(fr?'[point de passage]':'[border crossing point]');
-      var dirFr = dir==='exit from' ? 'sortie de l’espace Schengen' : 'entrée dans l’espace Schengen';
-      var what = {
-        exit: fr ? 'Ma sortie de l’espace Schengen n’a pas été enregistrée.' : 'My exit from the Schengen area was not recorded.',
-        entry: fr ? 'Mon entrée dans l’espace Schengen n’a pas été enregistrée.' : 'My entry into the Schengen area was not recorded.',
-        date: fr ? 'Un passage frontalier a été enregistré à une date erronée.' : 'A border crossing was recorded with the wrong date.',
-        overstay: fr ? 'Le service officiel de vérification de la durée de séjour indique que j’ai dépassé la durée autorisée ou qu’il ne me reste aucun jour, ce qui est inexact.' : 'The official stay-check service shows that I have overstayed or have no days left, which is incorrect.'
-      }[p];
-      lines.push(what);
-      lines.push(fr ? 'Fait exact : '+dirFr+' le '+cd+' au point de passage '+place+'.'
-                    : 'Correct fact: '+dir+' the Schengen area on '+cd+' at '+place+'.');
-      if (v('c-detail')) lines.push((fr?'Ce que montre l’enregistrement : ':'What the record shows: ')+v('c-detail'));
-      lines.push(fr ? 'Je vous demande de vérifier ces données et de les rectifier ou de les compléter sans délai, puis de me confirmer par écrit les mesures prises. Si ces données ont été introduites par un autre État membre, je vous remercie de prendre contact avec celui-ci conformément à l’article 52 du règlement (UE) 2017/2226.'
-                    : 'I ask you to check this data and to rectify or complete it without delay, and to confirm in writing the action taken. If the data was entered by another Member State, please contact that Member State as provided for in Article 52 of Regulation (EU) 2017/2226.');
-    }
-    var useTrips = $('use-trips') && $('use-trips').checked && trips.length;
-    if (useTrips) {
-      lines.push('');
-      lines.push(fr ? (p==='access'?'3':'4')+'. Chronologie de mes séjours dans l’espace Schengen' : (p==='access'?'3':'4')+'. Chronology of my stays in the Schengen area');
-      trips.slice().sort(function(a,b){return a.entry<b.entry?-1:1;}).forEach(function(t){
-        var n = S.toDay(t.exit)-S.toDay(t.entry)+1;
-        lines.push('- '+d(t.entry,L)+' → '+d(t.exit,L)+' ('+n+(fr?' j':' days')+')'+(t.where?' — '+t.where:'')+(t.proof?' ['+(fr?'preuve : ':'evidence: ')+t.proof+']':''));
-      });
-    }
-    var ev = Array.prototype.slice.call(document.querySelectorAll('#evidence input:checked')).map(function(i){ var e = EV.filter(function(x){return x[0]===i.value;})[0]; return fr?e[2]:e[1]; });
-    if (v('ev-other')) ev.push(v('ev-other'));
-    lines.push('');
-    lines.push(fr ? 'Pièces jointes (copies) :' : 'Enclosures (copies):');
-    (ev.length?ev:[fr?'[à compléter]':'[to complete]']).forEach(function(e){ lines.push('- '+e); });
-    lines.push('');
-    lines.push(fr ? 'Je vous remercie de me répondre dans les délais prévus par l’article 52 du règlement (UE) 2017/2226 et de m’indiquer, en cas de refus, les voies de recours dont je dispose, y compris la possibilité de saisir l’autorité nationale de contrôle de la protection des données.'
-                  : 'I would be grateful for a reply within the time limits laid down in Article 52 of Regulation (EU) 2017/2226 and, in case of refusal, for information on the remedies available to me, including the right to lodge a complaint with the national data protection supervisory authority.');
-    lines.push('');
-    lines.push(fr ? 'Veuillez agréer, Madame, Monsieur, l’expression de mes salutations distinguées.' : 'Yours faithfully,');
-    lines.push(''); lines.push(name);
-    return lines.join('\n');
+    var c = $('country').value;
+    return window.EESLetter.build({
+      lang: v('lang'), problem: v('problem'), name: v('name'), addr: v('addr'), email: v('email'), dob: v('dob'),
+      nat: v('nat'), ppn: v('ppn'), ppc: v('ppc'), cDate: v('c-date'), dir: v('c-dir')==='exit from'?'exit':'entry',
+      place: v('c-place'), detail: v('c-detail'), ctrl: ctrl(), countryName: c,
+      trips: ($('use-trips') && $('use-trips').checked) ? trips : [],
+      evidence: Array.prototype.slice.call(document.querySelectorAll('#evidence input:checked')).map(function(i){return i.value;}),
+      evOther: v('ev-other')
+    });
   }
 
   $('gen').addEventListener('submit', function(e){
     e.preventDefault();
     $('letter').textContent = build();
-    var ct=ctrl(); if(ct){ $('mail').href='mailto:'+ct.e+'?subject='+encodeURIComponent($('lang').value==='fr'?'Demande d’accès et de rectification EES – article 52 du règlement (UE) 2017/2226':'EES access and rectification request – Article 52 of Regulation (EU) 2017/2226'); $('mail').hidden=false; } else $('mail').hidden=true;
+    var ct=ctrl(); if(ct){ $('mail').href='mailto:'+ct.e+'?subject='+encodeURIComponent(window.EESLetter.subject($('lang').value)); $('mail').hidden=false; } else $('mail').hidden=true;
     $('out').hidden = false; $('out').scrollIntoView({behavior:'smooth'}); $('letter').focus({preventScroll:true});
   });
   $('copy').addEventListener('click', function(){
