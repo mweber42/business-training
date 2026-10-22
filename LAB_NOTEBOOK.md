@@ -47,7 +47,16 @@ Scores 1–5 (Pain, Demand evidence, Competition weakness, Build effort ease, Mo
 - **Pages:** `/schengen-90-180-calculator/`, `/ees-record-wrong/`
 - **Primary metric:** organic visits to both pages (Search Console + analytics). Secondary: letter generated (local event count once analytics exists), GitHub issues/feedback.
 - **Thresholds (review at +60 days, ~2026-12-21):** keep if ≥ 300 organic visits/month or ≥ 20 letters generated; iterate if 50–300; kill/re-angle if < 50 after indexing confirmed.
-- **Status:** building (2026-10-22).
+- **Status:** live in repo (2026-10-22, 16:50). Pages: `/ees-record-wrong/` (kit + Article 52 letter generator EN/FR), `/schengen-90-180-calculator/` (pre/post-EES log + planner, unit-tested engine), `/ees-checker-not-ok/` (6-cause diagnostic guide), `/fr/ees-sortie-non-enregistree/` (French landing).
+- **Evidence gathered:** Which? 15 Oct 2026 (false Not OK, counter running at home, pre-EES days excluded); Travelling for Business 21 Aug 2026 (EES checks suspended at busy borders → no exit record; FCDO says ask for correction at next crossing); Rick Steves forum Aug–Sep 2026 (FCO, Prague exits missed; message "cannot currently be calculated due to temporary incomplete data"); KMar procedure (45 days); Wego guide (Art. 52 timelines); Kohen Avocats (French OQTF consequences).
+
+### EXP-002 — Official travel-authorisation site checker (EN + FR)
+- **Hypothesis:** People about to pay for a UK ETA / ESTA / eTA / "ETIAS" search "site officiel ETA Royaume-Uni", "ESTA official site", "is X legit". A link checker + real price table beats static articles and directly prevents losses. ETIAS presale scams continue while the launch is postponed (2027).
+- **Pages:** `/official-travel-authorisation-checker/`, `/fr/autorisation-voyage-site-officiel/`
+- **Facts (checked 22 Oct 2026):** UK ETA £20 since 8 Apr 2026 (gov.uk/eta, app), 2 yrs; ESTA ≈ US$40 (VisasNews: $40.27 → $40.62 from 16 Oct 2026, single source → shown as "about $40"); Canada eTA CA$7 (canada.ca); ETIAS €20, 3 yrs, NOT operational, delayed to 2027 (Travel Market Report 11 Aug 2026, TPG 8 Jul 2026).
+- **Metric / thresholds (review ~2026-12-21):** organic visits; keep ≥ 300/month, iterate 50–300, re-angle < 50 after indexing.
+- **Risk:** prices change → re-verify monthly; this page must never be wrong on a price.
+- **Monetization idea (not activated):** none on this page — trust is the asset. Possibly later a clearly-labelled travel insurance or eSIM affiliate on a separate page.
 
 ## Waiting on Marine
 - [ ] Install the Claude GitHub App on `mweber42/business-training` (push access refused at 16:40).
@@ -62,4 +71,7 @@ Scores 1–5 (Pain, Demand evidence, Competition weakness, Build effort ease, Mo
 
 ## Log
 - 2026-10-22 16:35 — Repo attached (read OK, push refused: GitHub App missing). Cloned empty repo.
-- 2026-10-22 16:55 — Opportunity scan done (12 candidates). EXP-001 chosen.
+- 2026-10-22 16:39 — Marine installed the GitHub App: push works.
+- 2026-10-22 16:45 — EXP-001 v1 pushed (kit, calculator, legal, privacy, about, sitemap, robots). Browser-tested at 390px: no JS errors; calculator numbers hand-checked (73 used / latest exit 8 Nov / earliest 14-day entry 19 Nov for test data).
+- 2026-10-22 16:50 — Added Not OK diagnostic guide + French landing page.
+- 2026-10-22 17:05 — EXP-002 built and pushed (EN/FR). GitHub Pages not yet reachable (Marine to enable in Settings → Pages).
