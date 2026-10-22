@@ -6,6 +6,8 @@
 <title>EES Record Wrong or Exit Not Recorded? Free Correction Letter (Article 52) | Plainsight Lab</title>
 <meta name="description" content="The EU checker says you overstayed but you didn't? Missing EES exit or wrong date? Build your Article 52 access and rectification request in 5 minutes: letter, travel chronology and evidence list. Free, private, nothing leaves your device.">
 <link rel="canonical" href="https://mweber42.github.io/business-training/ees-record-wrong/">
+<link rel="alternate" hreflang="en" href="https://mweber42.github.io/business-training/ees-record-wrong/">
+<link rel="alternate" hreflang="fr" href="https://mweber42.github.io/business-training/fr/ees-sortie-non-enregistree/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="EES record wrong? Write your correction request in 5 minutes">
 <meta property="og:description" content="Missing exit, wrong date or a false overstay in the Entry/Exit System: free step-by-step kit and Article 52 letter generator.">
@@ -177,6 +179,7 @@
     ? trips.length+' trip(s) found in your <a href="../schengen-90-180-calculator/">90/180 calculator</a> on this device. They will be added as a chronology. <label style="font-weight:400;display:inline-flex;gap:6px;align-items:center"><input type="checkbox" id="use-trips" checked style="width:auto;min-height:0"> include them</label>'
     : 'Tip: add your trips in the <a href="../schengen-90-180-calculator/">90/180 calculator</a> first (on this device) and they will be added to your request as a dated chronology.';
 
+  try { if (new URLSearchParams(location.search).get('lang')==='fr') $('lang').value='fr'; } catch(e){}
   $('problem').addEventListener('change', function(){ $('crossing-block').hidden = this.value==='access'; });
 
   function v(id){ return ($(id).value||'').trim(); }
