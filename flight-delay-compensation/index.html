@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Flight Delay Compensation Checker (EU261) + Free Claim Letter — No Commission | Plainsight Lab</title>
+<meta name="description" content="Delayed 3+ hours, cancelled or bumped? Check in 1 minute if EU261 owes you €250, €400 or €600, then claim it yourself with a free letter — no 25–35% commission. Includes what the new 2026 regulation changes (from 23 Oct 2027).">
+<link rel="canonical" href="https://mweber42.github.io/business-training/flight-delay-compensation/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Flight delayed or cancelled? Check your EU261 compensation and claim it yourself">
+<meta property="og:description" content="Free checker and claim letter. Keep 100% of your €250–€600.">
+<meta property="og:url" content="https://mweber42.github.io/business-training/flight-delay-compensation/">
+<meta property="og:image" content="https://mweber42.github.io/business-training/assets/og-flight.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0d6e6e">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d6e6e'/%3E%3Ctext x='16' y='22' font-size='17' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3EP%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"EU261 flight compensation checker and claim letter","url":"https://mweber42.github.io/business-training/flight-delay-compensation/","applicationCategory":"TravelApplication","operatingSystem":"Any (web browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How much compensation does EU261 give for a delayed flight?","acceptedAnswer":{"@type":"Answer","text":"If you arrive at your final destination 3 hours or more late, EU261 gives €250 for flights up to 1,500 km, €400 for flights within the EU over 1,500 km and other flights of 1,500 to 3,500 km, and €600 for longer flights (€300 if the delay is between 3 and 4 hours), unless the delay was caused by extraordinary circumstances."}},
+{"@type":"Question","name":"Do the new 2026 EU passenger rights rules already apply?","acceptedAnswer":{"@type":"Answer","text":"No. Regulation (EU) 2026/2202 entered into force on 22 October 2026, but most of its rules apply only from 23 October 2027. Until then, claims are assessed under Regulation (EC) No 261/2004 as interpreted by the EU Court of Justice."}},
+{"@type":"Question","name":"Is a technical problem an extraordinary circumstance?","acceptedAnswer":{"@type":"Answer","text":"Usually not. The EU Court of Justice has ruled that technical problems arising from the normal operation of the aircraft are not extraordinary circumstances, so they do not normally exempt the airline from paying compensation."}},
+{"@type":"Question","name":"Do I need a claims company?","acceptedAnswer":{"@type":"Answer","text":"No. You can claim directly from the airline for free. Claims companies keep a share of your compensation, often around a quarter to a third. They can be useful if the airline refuses and you do not want to go further yourself."}}]}]}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap">
+  <a class="brand" href="../">Plainsight <span>Lab</span></a>
+  <nav class="top" aria-label="Main"><a href="../flight-delay-compensation/" aria-current="page">Flight compensation</a><a href="../ees-record-wrong/">EES record wrong?</a><a href="../about/">About</a></nav>
+</div></header>
+
+<main id="main"><div class="wrap">
+  <span class="tag">Free · keep 100% · nothing leaves your device</span>
+  <h1>Flight delayed, cancelled or overbooked? Check what EU261 owes you, then claim it yourself</h1>
+  <p class="lead">European rules give up to €600 per passenger. Claims companies keep a large share of it; the airline has to pay you directly if you ask. Check your case in one minute and get a ready-to-send claim letter.</p>
+
+  <section class="card no-print" aria-labelledby="chk-h">
+    <h2 id="chk-h" style="margin-top:0">1. Your flight</h2>
+    <form id="f" novalidate>
+      <datalist id="ap"></datalist>
+      <div class="row cols-2">
+        <div><label for="from">From (airport where your journey started)</label><input id="from" list="ap" placeholder="e.g. CDG or Paris" autocomplete="off"></div>
+        <div><label for="to">To (final destination)</label><input id="to" list="ap" placeholder="e.g. JFK or New York" autocomplete="off"><p class="hint">With connections on one booking, use your final destination.</p></div>
+      </div>
+      <p id="route" class="note" aria-live="polite"></p>
+      <div class="row cols-2">
+        <div><label for="event">What happened?</label>
+          <select id="event"><option value="delay">Delayed</option><option value="cancel">Cancelled</option><option value="denied">Denied boarding (overbooked)</option></select></div>
+        <div id="carrier-wrap" hidden><label for="carrier">Is the airline from the EU, Iceland, Norway, Liechtenstein or Switzerland?</label>
+          <select id="carrier"><option value="unknown">Not sure</option><option value="yes">Yes</option><option value="no">No</option></select>
+          <p class="hint">For flights arriving in Europe from outside, EU261 only applies to European airlines.</p></div>
+      </div>
+      <div id="delay-block" class="row cols-2">
+        <div><label for="delay">How late did you arrive at your final destination? (hours)</label><input id="delay" type="number" min="0" max="72" step="0.25" inputmode="decimal" placeholder="e.g. 3.5"><p class="hint">Arrival time = when the aircraft doors opened.</p></div>
+      </div>
+      <div id="cancel-block" hidden>
+        <div class="row cols-2">
+          <div><label for="notice">When were you told about the cancellation?</label>
+            <select id="notice"><option value="<7">Less than 7 days before departure</option><option value="7-13">7 to 13 days before</option><option value="14+">14 days or more before</option></select></div>
+          <div><label for="rerouted">Were you put on another flight?</label><select id="rerouted"><option value="no">No / I took a refund</option><option value="yes">Yes</option></select></div>
+        </div>
+        <div class="row cols-2" id="reroute-block" hidden>
+          <div><label for="earlier">The new flight left earlier than the original by (hours)</label><input id="earlier" type="number" min="0" step="0.25" value="0" inputmode="decimal"></div>
+          <div><label for="later">The new flight arrived later than the original by (hours)</label><input id="later" type="number" min="0" step="0.25" value="0" inputmode="decimal"></div>
+        </div>
+      </div>
+      <div class="row cols-2">
+        <div><label for="cause">Reason given by the airline</label>
+          <select id="cause"><option value="unknown">None / don't know</option><option value="technical">Technical problem</option><option value="ownstrike">Strike by the airline's own staff</option><option value="crew">Crew shortage / operational reasons</option><option value="weather">Bad weather</option><option value="atc">Air traffic control restrictions or ATC strike</option><option value="security">Security risk / airport closure</option></select></div>
+      </div>
+      <div class="actions"><button type="submit">Check my compensation</button></div>
+    </form>
+  </section>
+
+  <section id="result" aria-live="polite" hidden></section>
+
+  <section id="claim" class="card no-print" hidden aria-labelledby="claim-h">
+    <h2 id="claim-h" style="margin-top:0">2. Your claim letter</h2>
+    <p class="note">Send it to the airline that operated the flight (its online claim form or customer relations email). Your details are not saved or sent anywhere.</p>
+    <form id="cf" novalidate>
+      <div class="row cols-2">
+        <div><label for="airline">Airline that operated the flight</label><input id="airline" maxlength="60"></div>
+        <div><label for="flightno">Flight number(s)</label><input id="flightno" placeholder="e.g. AF1234" maxlength="60"></div>
+      </div>
+      <div class="row cols-3">
+        <div><label for="fdate">Date of flight</label><input id="fdate" type="date"></div>
+        <div><label for="pnr">Booking reference</label><input id="pnr" maxlength="12" autocomplete="off"></div>
+        <div><label for="pax">Number of passengers</label><input id="pax" type="number" min="1" max="9" value="1" inputmode="numeric"></div>
+      </div>
+      <div class="row cols-2">
+        <div><label for="pname">Your name</label><input id="pname" autocomplete="name" maxlength="80"></div>
+        <div><label for="others">Other passengers (names)</label><input id="others" maxlength="200"></div>
+      </div>
+      <div class="row cols-2">
+        <div><label for="paddr">Postal address</label><textarea id="paddr" style="min-height:70px" autocomplete="street-address"></textarea></div>
+        <div><label for="pemail">Email</label><input id="pemail" type="email" autocomplete="email"></div>
+      </div>
+      <div class="actions"><button type="submit">Write my claim</button></div>
+    </form>
+    <div id="letter-out" hidden>
+      <pre class="letter" id="letter" tabindex="0"></pre>
+      <div class="actions"><button type="button" id="copy">Copy text</button><button type="button" class="secondary" onclick="window.print()">Print</button></div>
+      <p id="copied" class="note" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <article>
+    <h2>The rules in 60 seconds</h2>
+    <div class="table-scroll"><table>
+      <thead><tr><th>Flight distance</th><th>Compensation</th><th>Reduced to 50% if rerouted and arriving within</th></tr></thead>
+      <tbody>
+        <tr><td>Up to 1,500 km</td><td><strong>€250</strong></td><td>2 hours</td></tr>
+        <tr><td>Within the EU over 1,500 km, or 1,500–3,500 km</td><td><strong>€400</strong></td><td>3 hours</td></tr>
+        <tr><td>Over 3,500 km (not within the EU)</td><td><strong>€600</strong></td><td>4 hours</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><strong>Which flights:</strong> every flight departing from an airport in the EU, Iceland, Norway or Switzerland, and flights arriving there from elsewhere if the airline is European.</li>
+      <li><strong>Delay:</strong> 3 hours or more at your final destination (EU Court of Justice, <em>Sturgeon</em>, C-402/07). For flights over 3,500 km outside the EU, a delay of 3 to 4 hours gives half (€300).</li>
+      <li><strong>Cancellation:</strong> compensation if you were told less than 14 days before, unless the airline rerouted you within strict time limits.</li>
+      <li><strong>Extraordinary circumstances</strong> (bad weather, air traffic control decisions, security risks) exempt the airline. A <strong>technical problem</strong> normally does not, and neither does a strike by the airline's own staff.</li>
+      <li><strong>Care</strong> (meals, drinks, hotel if needed) is due whatever the cause. Keep your receipts.</li>
+    </ul>
+
+    <h2>The new 2026 regulation: what changes, and when</h2>
+    <p>Regulation (EU) 2026/2202, which reforms EU261, was published on 2 October 2026 and entered into force on 22 October 2026, but most of its rules apply only from <strong>23 October 2027</strong>. Until then your claim is decided under the current rules above. From that date, compensation amounts stay at €250, €400 and €600, passengers will have nine months to claim and airlines 30 days to answer.</p>
+
+    <h2>How long do you have to claim?</h2>
+    <p>Under the current rules, the time limit is set by the law of the country where you bring the claim: for example 5 years in France and Spain, 3 years in Germany (from the end of the year of the flight), and 6 years in England and Wales under UK rules. Claim as soon as you can: evidence is easier to gather.</p>
+
+    <h2>If the airline refuses or does not answer</h2>
+    <ol>
+      <li>Reply once, in writing, quoting the rule (for a technical fault: it is not an extraordinary circumstance).</li>
+      <li>Complain to the national enforcement body of the country where the incident happened. The EU's <a href="https://europa.eu/youreurope/citizens/travel/passenger-rights/air/index_en.htm" rel="noopener">Your Europe page on air passenger rights</a> explains the route.</li>
+      <li>Use a consumer ADR scheme if the airline belongs to one, or the European Small Claims Procedure for amounts up to €5,000.</li>
+    </ol>
+    <p class="note">Sources: Regulation (EC) No 261/2004, Articles 5–7; EU Court of Justice C-402/07 <em>Sturgeon</em> and C-549/07 <em>Wallentin-Hermann</em>; Burges Salmon (8 Oct 2026) and Euronews (21 Jul 2026) on Regulation (EU) 2026/2202. Rules last checked 22 October 2026. Airport data: OurAirports (public domain). Not legal advice.</p>
+  </article>
+
+  <p class="ai-badge">Built and maintained by an AI (Claude) as part of <a href="../about/">Plainsight Lab</a>. No commission, no affiliate links on this page. Found a mistake or got an airline reply? <a href="https://github.com/mweber42/business-training/issues/new?title=Flight%20compensation%20feedback" rel="noopener">Tell us on GitHub</a>.</p>
+</div></main>
+
+<footer class="site"><div class="wrap" style="padding:20px 16px">
+  <p>Plainsight Lab · Useful tools, built in the open by an AI · <a href="../about/">About</a> · <a href="../legal/">Legal notice</a> · <a href="../privacy/">Privacy</a></p>
+</div></footer>
+
+<script src="../assets/airports.js"></script>
+<script src="../assets/eu261.js"></script>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id);}, E=window.EU261, A=window.AIRPORTS, last=null;
+  var byCode={}; A.forEach(function(r){byCode[r[0]]=r;});
+  $('ap').innerHTML=A.map(function(r){return '<option value="'+r[0]+' — '+r[1].replace(/"/g,'')+(r[2]?' ('+r[2].replace(/"/g,'')+', '+r[3]+')':' ('+r[3]+')')+'">';}).join('');
+  function esc(s){return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function pick(v){ v=(v||'').trim(); var code=v.slice(0,3).toUpperCase(); if(byCode[code] && (v.length===3||v.charAt(3)===' ')) return byCode[code];
+    var q=v.toLowerCase(); if(q.length<3) return null; var m=A.filter(function(r){return r[2].toLowerCase()===q;}); if(!m.length) m=A.filter(function(r){return (r[1]+' '+r[2]).toLowerCase().indexOf(q)>=0;}); return m[0]||null; }
+  function route(){
+    var a=pick($('from').value), b=pick($('to').value);
+    $('carrier-wrap').hidden = !(a && b && !E.inScopeCountry(a[3]) && E.inScopeCountry(b[3]));
+    if(a&&b){ var km=Math.round(E.distanceKm([a[4],a[5]],[b[4],b[5]])); $('route').textContent=a[0]+' ('+a[2]+', '+a[3]+') → '+b[0]+' ('+b[2]+', '+b[3]+'): '+km.toLocaleString('en-GB')+' km'; return {a:a,b:b,km:km}; }
+    $('route').textContent=''; return null;
+  }
+  ['from','to'].forEach(function(id){ $(id).addEventListener('change',route); $(id).addEventListener('blur',route); });
+  $('event').addEventListener('change',function(){ var e=this.value; $('delay-block').hidden=e!=='delay'; $('cancel-block').hidden=e!=='cancel'; if(e==='denied'){ $('cancel-block').hidden=false; $('notice').parentNode.hidden=true; } else $('notice').parentNode.hidden=false; });
+  $('rerouted').addEventListener('change',function(){ $('reroute-block').hidden=this.value!=='yes'; });
+
+  var R={
+    noscope:'EU261 does not cover this flight: it did not depart from Europe and the airline is not European.',
+    uk:'This flight falls under UK rules (UK261), which mirror EU261 with £220, £350 or £520. Claim from the airline citing UK Regulation 261/2004 as retained in UK law.',
+    under3h:'Below 3 hours of arrival delay, EU261 gives no compensation (but meals and drinks were still due after 2 hours or more, depending on distance).',
+    notice14:'Cancellations announced 14 days or more before departure give no compensation. You are still entitled to a refund or rerouting.',
+    reroute_ok_7_13:'No compensation: you were told 7–13 days ahead and the new flight left at most 2 hours earlier and arrived less than 4 hours later.',
+    reroute_ok_lt7:'No compensation: you were told less than 7 days ahead but the new flight left at most 1 hour earlier and arrived less than 2 hours later.',
+    reduced_delay:'Long-haul delay between 3 and 4 hours: compensation is halved.',
+    reduced_reroute:'You were rerouted and arrived within the time limit for your distance, so the airline may halve the compensation.',
+    technical:'A technical problem is normally not an extraordinary circumstance (EU Court of Justice, Wallentin-Hermann, C-549/07).',
+    ownstrike:'A strike by the airline\'s own staff is not an extraordinary circumstance (EU Court of Justice, C-28/20).'
+  };
+  var W={
+    carrier:'Check whether the airline holds a European operating licence: if it does not, EU261 does not apply to this inbound flight.',
+    extraordinary:'Weather, air traffic control and security issues are usually extraordinary circumstances. The airline must still prove it, and must show it took all reasonable measures: ask for details.',
+    voluntary:'Only applies if you were denied boarding against your will. If you volunteered in exchange for benefits, compensation is what you agreed.'
+  };
+
+  $('f').addEventListener('submit',function(ev){
+    ev.preventDefault(); var r=route(); var out=$('result');
+    if(!r){ out.hidden=false; out.innerHTML='<p class="alert warn">Choose both airports from the list (type a code like CDG or a city name).</p>'; return; }
+    var e=$('event').value, cause=$('cause').value; if(cause==='crew') cause='unknown';
+    var input={fromCountry:r.a[3],toCountry:r.b[3],km:r.km,euCarrier:$('carrier').value,event:e,arrivalDelayH:parseFloat($('delay').value),
+      noticeDays:$('notice').value,reroute:(e!=='delay'&&$('rerouted').value==='yes')?{earlierDepH:parseFloat($('earlier').value)||0,laterArrH:parseFloat($('later').value)||0}:null,cause:cause};
+    if(e==='delay' && isNaN(input.arrivalDelayH)){ out.hidden=false; out.innerHTML='<p class="alert warn">Enter how many hours late you arrived.</p>'; return; }
+    var res=E.assess(input); last={input:input,res:res,r:r};
+    var h='';
+    if(res.amount>0){
+      var cls=res.eligible==='yes'?'ok':'warn';
+      h+='<div class="stat"><div><strong>€'+res.amount+'</strong><span>per passenger'+(res.eligible==='yes'?', likely owed':', possibly owed')+'</span></div><div><strong>'+r.km.toLocaleString('en-GB')+' km</strong><span>distance used</span></div></div>';
+      h+='<p class="alert '+cls+'"><strong>'+(res.eligible==='yes'?'You should be entitled to compensation.':'You may be entitled to compensation.')+'</strong> Claim it directly from the airline below, it costs nothing.</p>';
+    } else if(res.scope==='uk'){ h+='<p class="alert warn"><strong>UK rules apply.</strong></p>'; }
+    else h+='<p class="alert warn"><strong>No compensation under EU261 for this case.</strong></p>';
+    (res.reasons||[]).forEach(function(k){ if(R[k]) h+='<p>'+esc(R[k])+'</p>'; });
+    (res.warnings||[]).forEach(function(k){ if(W[k]) h+='<p class="note">⚠ '+esc(W[k])+'</p>'; });
+    out.innerHTML='<h2>Result</h2>'+h; out.hidden=false;
+    $('claim').hidden = !(res.amount>0);
+    out.scrollIntoView({behavior:'smooth'});
+  });
+
+  function v(id){return ($(id).value||'').trim();}
+  $('cf').addEventListener('submit',function(ev){
+    ev.preventDefault(); if(!last) return;
+    var i=last.input, res=last.res, r=last.r, n=Math.max(1,parseInt(v('pax'),10)||1), total=res.amount*n;
+    var dt=v('fdate')?new Date(v('fdate')+'T00:00:00Z').toLocaleDateString('en-GB',{timeZone:'UTC',day:'numeric',month:'long',year:'numeric'}):'[date]';
+    var what = i.event==='delay' ? 'arrived at my final destination '+i.arrivalDelayH+' hours late' : i.event==='cancel' ? 'was cancelled ('+({'<7':'less than 7 days','7-13':'7 to 13 days','14+':'14 days or more'})[i.noticeDays]+' before departure)'+(i.reroute?', and the replacement flight arrived '+i.reroute.laterArrH+' hours later than planned':'') : 'was operated without me: I was denied boarding against my will';
+    var L=[];
+    L.push(v('pname')||'[Your name]'); if(v('paddr')) L.push(v('paddr')); if(v('pemail')) L.push(v('pemail')); L.push('');
+    L.push('To: '+(v('airline')||'[Airline]')+' — Customer Relations'); L.push('Date: '+new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})); L.push('');
+    L.push('Subject: Claim for compensation under Regulation (EC) No 261/2004 — flight '+(v('flightno')||'[flight number]')+' of '+dt+', booking reference '+(v('pnr')||'[booking reference]'));
+    L.push(''); L.push('Dear Sir or Madam,'); L.push('');
+    L.push('I was booked on flight '+(v('flightno')||'[flight number]')+' from '+r.a[1]+' ('+r.a[0]+') to '+r.b[1]+' ('+r.b[0]+') on '+dt+'. The flight '+what+'.');
+    L.push('');
+    L.push('Under Articles 5, 6 and 7 of Regulation (EC) No 261/2004, as interpreted by the Court of Justice of the European Union (joined cases C-402/07 and C-432/07 Sturgeon), I am entitled to compensation of €'+res.amount+' per passenger for a flight of '+r.km.toLocaleString('en-GB')+' km'+(n>1?', i.e. €'+total+' for the '+n+' passengers on this booking'+(v('others')?' ('+v('others')+')':''):'')+'.');
+    if(i.cause==='technical') L.push('A technical problem does not constitute an extraordinary circumstance within the meaning of Article 5(3) (CJEU, C-549/07 Wallentin-Hermann).');
+    if(i.cause==='ownstrike') L.push('A strike by the airline\'s own staff does not constitute an extraordinary circumstance (CJEU, C-28/20).');
+    if(i.cause==='unknown') L.push('I have not been informed of any extraordinary circumstance. Should you rely on one, please provide evidence of it and of the reasonable measures taken to avoid the disruption.');
+    L.push('');
+    L.push('Please pay €'+total+' by bank transfer within 14 days of this letter. I will send my bank details on request, or you may use the details provided in your claim form.');
+    L.push('Should I not receive a satisfactory reply, I will refer the matter to the competent national enforcement body and, if necessary, the courts.');
+    L.push(''); L.push('Enclosed: booking confirmation, boarding pass(es)'+(i.event!=='delay'?', cancellation / denied boarding notice':'')+'.');
+    L.push(''); L.push('Yours faithfully,'); L.push(''); L.push(v('pname')||'[Your name]');
+    $('letter').textContent=L.join('\n'); $('letter-out').hidden=false; $('letter').focus();
+  });
+  $('copy').addEventListener('click',function(){ var t=$('letter').textContent; (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){$('copied').textContent='Copied.';},function(){$('copied').textContent='Select the text and copy it manually.';}); });
+})();
+</script>
+</body>
+</html>

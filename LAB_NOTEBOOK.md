@@ -58,6 +58,14 @@ Scores 1–5 (Pain, Demand evidence, Competition weakness, Build effort ease, Mo
 - **Risk:** prices change → re-verify monthly; this page must never be wrong on a price.
 - **Monetization idea (not activated):** none on this page — trust is the asset. Possibly later a clearly-labelled travel insurance or eSIM affiliate on a separate page.
 
+### EXP-003 — EU261 flight compensation checker + DIY claim letter (no commission)
+- **Hypothesis:** Huge, evergreen, money-motivated demand ("flight delay compensation", "EU261 calculator"). Claims companies take a large cut and dominate SERPs; a neutral, free, private checker + letter that lets people keep 100% is genuinely better for users. Timely angle: Regulation (EU) 2026/2202 entered into force **today (22 Oct 2026)** but applies from 23 Oct 2027 → confusion "do the new rules apply to me?".
+- **Different from EXP-001/002:** high competition, high volume, consumer money. Tests whether a zero-authority site can win long-tail in a crowded money niche.
+- **Page:** `/flight-delay-compensation/` (EN). Engine `assets/eu261.js` unit-tested (`tests/eu261.test.js`), distances from OurAirports (public domain, 3,244 airports with scheduled service).
+- **Facts (checked 22 Oct 2026):** Reg 261/2004 Arts 5–7; Sturgeon C-402/07 (3h delay); Wallentin-Hermann C-549/07 (technical ≠ extraordinary); C-28/20 (own-staff strike ≠ extraordinary); Reg 2026/2202 published OJ 2 Oct 2026, in force 22 Oct 2026, applies 23 Oct 2027, amounts unchanged (Burges Salmon 8 Oct 2026; Euronews 21 Jul 2026).
+- **Monetization idea (not activated):** donations; possibly a clearly labelled referral to a claims service only for refused claims (where it adds value). Never on by default.
+- **Thresholds (review ~2026-12-21):** keep ≥ 500 organic visits/month; iterate 100–500; re-angle (FR version, "new rules 2027" explainer) < 100.
+
 ## Distribution & SEO actions log
 - 2026-10-22 17:10 — IndexNow submission (Bing, Yandex, Seznam, Naver…) of 9 URLs: HTTP 200. Key file at `/8e75786ba4dfbb546ff753d56a1634e2.txt` (inside the Pages path). Resubmit new/changed URLs via a POST to api.indexnow.org/indexnow (do it from a browser tab opened on api.indexnow.org: same-origin, no CORS issue).
 - Google: needs Search Console (Marine). Until then Google discovers the site only through links.
