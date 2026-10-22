@@ -61,6 +61,37 @@
     }
     return null;
   }
+  // Greedy plan maximising days inside between `from` and `to` (inclusive),
+  // given existing trips, with trips of at least `minLen` days.
+  // Enters as soon as a trip of >= minLen fits and stays as long as allowed.
+  function maximise(set, from, to, minLen) {
+    var s = new Set(set), trips = [], d = from;
+    minLen = Math.max(1, minLen || 1);
+    while (d <= to) {
+      if (s.has(d)) { d++; continue; }
+      var len = Math.min(maxStayFrom(s, d), to - d + 1);
+      if (len >= minLen) {
+        // stop before an already-planned trip would overlap
+        var k = 0; while (k < len && !s.has(d + k)) k++;
+        len = k;
+        // shrink if the new stay would break the rule on a later planned day
+        while (len >= minLen) {
+          var t = new Set(s); for (var j = 0; j < len; j++) t.add(d + j);
+          var bad = false; t.forEach(function (x) { if (!bad && x >= d && x <= d + len + 180 && usedOn(t, x) > 90) bad = true; });
+          if (!bad) break; len--;
+        }
+        if (len >= minLen) {
+          for (var i = 0; i < len; i++) s.add(d + i);
+          trips.push({ entry: d, exit: d + len - 1, days: len });
+          d += len; continue;
+        }
+      }
+      d++;
+    }
+    var total = trips.reduce(function (a, t) { return a + t.days; }, 0);
+    return { trips: trips, total: total };
+  }
+
   // Days (in the set) on which the rule was broken
   function overstayDays(set) {
     var out = [];
@@ -85,7 +116,7 @@
 
   var api = { toDay: toDay, toIso: toIso, todayDay: todayDay, fmt: fmt, daySet: daySet, usedOn: usedOn,
     remainingOn: remainingOn, maxStayFrom: maxStayFrom, earliestStartFor: earliestStartFor,
-    overstayDays: overstayDays, validateTrips: validateTrips, loadTrips: loadTrips, saveTrips: saveTrips,
+    overstayDays: overstayDays, maximise: maximise, validateTrips: validateTrips, loadTrips: loadTrips, saveTrips: saveTrips,
     EES_START: EES_START, EES_START_DAY: toDay(EES_START) };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.Schengen = api;
 })(this);
