@@ -1,0 +1,556 @@
+{
+  "source": "https://travel-europe.europa.eu/ees/contact-details-for-data-protection-matters",
+  "extracted": "2026-10-22",
+  "licence": "Factual data from the European Commission (reuse authorised under Commission Decision 2011/833/EU). Compilation by Plainsight Lab, CC0.",
+  "contacts": [
+    {
+      "country": "Austria",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Federal Minister of the Interior (Bundesminister für Inneres)",
+      "address": "Herrengasse 7, 1010 Vienna, Austria",
+      "email": "BMI-EES@bmi.gv.at",
+      "note": ""
+    },
+    {
+      "country": "Austria",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Austrian Data Protection Authority (Datenschutzbehörde)",
+      "address": "",
+      "email": "dsb@dsb.gv.at",
+      "website": ""
+    },
+    {
+      "country": "Belgium",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Director-General of the Immigration Office (Office des étrangers / Dienst Vreemdelingenzaken)",
+      "address": "Boulevard Pacheco 44, 1000 Brussels, Belgium",
+      "email": "infodesk@ibz.fgov.be",
+      "note": ""
+    },
+    {
+      "country": "Belgium",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Data Protection Authority (Autorité de protection des données)",
+      "address": "",
+      "email": "contact@apd-gba.be",
+      "website": ""
+    },
+    {
+      "country": "Bulgaria",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Ministry of Interior",
+      "address": "29 Shesti Septemvri Str., Sofia 1000, Bulgaria",
+      "email": "pk_spvo@mvr.bg",
+      "note": ""
+    },
+    {
+      "country": "Bulgaria",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Commission for Personal Data Protection",
+      "address": "",
+      "email": "kzld@cpdp.bg",
+      "website": ""
+    },
+    {
+      "country": "Croatia",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Ministry of the Interior, Border Police Directorate",
+      "address": "Ilica 335, Zagreb, Croatia",
+      "email": "border.data.protection@policija.hr",
+      "note": ""
+    },
+    {
+      "country": "Croatia",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Personal Data Protection Agency (AZOP)",
+      "address": "",
+      "email": "azop@azop.hr",
+      "website": ""
+    },
+    {
+      "country": "Czechia",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Police Presidium of the Czech Republic",
+      "address": "Strojnická 27, 170 89 Prague 7, Czech Republic",
+      "email": "epodatelna.policie@policie.gov.cz",
+      "note": ""
+    },
+    {
+      "country": "Czechia",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Office for Personal Data Protection",
+      "address": "",
+      "email": "posta@uoou.gov.cz",
+      "website": ""
+    },
+    {
+      "country": "Denmark",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Ministry of Immigration and Integration (Udlændinge- og Integrationsministeriet)",
+      "address": "Slotsholmsgade 10-12, DK-1216 København K, Denmark",
+      "email": "uim@uim.dk",
+      "note": ""
+    },
+    {
+      "country": "Denmark",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Danish Data Protection Agency (Datatilsynet)",
+      "address": "",
+      "email": "dt@datatilsynet.dk",
+      "website": ""
+    },
+    {
+      "country": "Estonia",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Police and Border Guard Board (Politsei- ja Piirivalveamet)",
+      "address": "Pärnu mnt 139, 15060 Tallinn, Estonia",
+      "email": "ppa@politsei.ee",
+      "note": ""
+    },
+    {
+      "country": "Estonia",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Data Protection Inspectorate",
+      "address": "",
+      "email": "info@aki.ee",
+      "website": ""
+    },
+    {
+      "country": "Finland",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Finnish Border Guard HQ (Rajavartiolaitoksen esikunta)",
+      "address": "Vilhonvuorenkatu 6 (P.O. Box 3), 00500 Helsinki, Finland",
+      "email": "rajavartiolaitos@raja.fi",
+      "note": ""
+    },
+    {
+      "country": "Finland",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Office of the Data Protection Ombudsman",
+      "address": "",
+      "email": "tietosuoja@om.fi",
+      "website": ""
+    },
+    {
+      "country": "France",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Direction générale des étrangers en France (DGEF), Ministère de l’Intérieur",
+      "address": "Place Beauvau, 75008 Paris, France",
+      "email": "donnees-personnelles-dgef@interieur.gouv.fr",
+      "note": ""
+    },
+    {
+      "country": "France",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "CNIL (Commission nationale de l’informatique et des libertés)",
+      "address": "",
+      "email": "",
+      "website": "https://www.cnil.fr"
+    },
+    {
+      "country": "Germany",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Federal Police (Bundespolizeipräsidium)",
+      "address": "Heinrich-Mann-Allee 103, 14473 Potsdam, Germany",
+      "email": "bpolp@polizei.bund.de",
+      "note": ""
+    },
+    {
+      "country": "Germany",
+      "role": "data_controller",
+      "primary": false,
+      "name": "Federal Office of Administration (Bundesverwaltungsamt)",
+      "address": "50728 Köln, Germany (S I 7)",
+      "email": "eu-zentrale-services@bva.bund.de",
+      "note": ""
+    },
+    {
+      "country": "Germany",
+      "role": "data_controller",
+      "primary": false,
+      "name": "Bavarian Border Police (Grenzpolizeidirektion Passau)",
+      "address": "Spitalhofstraße 94, 94032 Passau, Germany",
+      "email": "grenzpolizeidirektion.passau@polizei.bayern.de",
+      "note": ""
+    },
+    {
+      "country": "Germany",
+      "role": "data_controller",
+      "primary": false,
+      "name": "Hamburg Water Police (Wasserschutzpolizei Hamburg)",
+      "address": "Kehrwiederspitze 1, 20457 Hamburg, Germany",
+      "email": "wsp62@polizei.hamburg.de",
+      "note": ""
+    },
+    {
+      "country": "Germany",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Federal Commissioner for Data Protection (BfDI)",
+      "address": "",
+      "email": "poststelle@bfdi.bund.de",
+      "website": ""
+    },
+    {
+      "country": "Greece",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Hellenic Police Headquarters",
+      "address": "P. Kanellopoulou 4, 101 77 Athens, Greece",
+      "email": "kepik@astynomia.gr",
+      "note": ""
+    },
+    {
+      "country": "Greece",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Hellenic Data Protection Authority",
+      "address": "",
+      "email": "contact@dpa.gr",
+      "website": ""
+    },
+    {
+      "country": "Hungary",
+      "role": "data_controller",
+      "primary": true,
+      "name": "National Police Headquarters (Országos Rendőr-főkapitányság)",
+      "address": "Teve u. 4-6, 1139 Budapest, Hungary",
+      "email": "adatvedelem@orfk.police.hu",
+      "note": "Data Protection Officer address (the controller lists only its website)."
+    },
+    {
+      "country": "Hungary",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "National Authority for Data Protection and Freedom of Information",
+      "address": "",
+      "email": "ugyfelszolgalat@naih.hu",
+      "website": ""
+    },
+    {
+      "country": "Iceland",
+      "role": "data_controller",
+      "primary": true,
+      "name": "National Police Commissioner (Ríkislögreglustjóri)",
+      "address": "Rauðarárstíg 25, 105 Reykjavík, Iceland",
+      "email": "rls@rls.is",
+      "note": ""
+    },
+    {
+      "country": "Iceland",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Icelandic Data Protection Authority (Persónuvernd)",
+      "address": "",
+      "email": "postur@personuvernd.is",
+      "website": ""
+    },
+    {
+      "country": "Italy",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Ministero dell’Interno – Dipartimento della Pubblica Sicurezza",
+      "address": "Piazza del Viminale 1, 00184 Roma, Italy",
+      "email": "rpd.dipps@pecps.interno.it",
+      "note": ""
+    },
+    {
+      "country": "Italy",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Garante per la protezione dei dati personali",
+      "address": "",
+      "email": "protocollo@gpdp.it",
+      "website": ""
+    },
+    {
+      "country": "Latvia",
+      "role": "data_controller",
+      "primary": true,
+      "name": "State Border Guard",
+      "address": "Rūdolfa street 5, Rīga, LV-1012, Latvia",
+      "email": "pasts@rs.gov.lv",
+      "note": ""
+    },
+    {
+      "country": "Latvia",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Data State Inspectorate",
+      "address": "",
+      "email": "pasts@dvi.gov.lv",
+      "website": ""
+    },
+    {
+      "country": "Liechtenstein",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Migration and Passport Office (Ausländer- und Passamt)",
+      "address": "Giessenstrasse 3, Postfach 684, 9490 Vaduz, Liechtenstein",
+      "email": "dsk.apa@llv.li",
+      "note": ""
+    },
+    {
+      "country": "Liechtenstein",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Data Protection Authority (Datenschutzstelle)",
+      "address": "",
+      "email": "info.dss@llv.li",
+      "website": ""
+    },
+    {
+      "country": "Lithuania",
+      "role": "data_controller",
+      "primary": true,
+      "name": "State Border Guard Service",
+      "address": "Savanorių pr. 2, Vilnius, Lithuania",
+      "email": "dvks@vsat.vrm.lt",
+      "note": ""
+    },
+    {
+      "country": "Lithuania",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "State Data Protection Inspectorate",
+      "address": "",
+      "email": "ada@ada.lt",
+      "website": ""
+    },
+    {
+      "country": "Luxembourg",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Direction générale de l’immigration, Ministère des Affaires intérieures",
+      "address": "B.P. 752, L-2017 Luxembourg",
+      "email": "immigration.ees@mai.etat.lu",
+      "note": ""
+    },
+    {
+      "country": "Luxembourg",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "CNPD (Commission nationale pour la protection des données)",
+      "address": "",
+      "email": "",
+      "website": "https://cnpd.public.lu"
+    },
+    {
+      "country": "Malta",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Principal Immigration Officer (Malta Police Force)",
+      "address": "Police General Headquarters, Floriana FRN1530, Malta",
+      "email": "sb.police@gov.mt",
+      "note": ""
+    },
+    {
+      "country": "Malta",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Information and Data Protection Commissioner",
+      "address": "",
+      "email": "idpc.info@ispc.org.mt",
+      "website": ""
+    },
+    {
+      "country": "Netherlands",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Royal Netherlands Marechaussee – GDPR Coordinator (Cluster Juridische Zaken)",
+      "address": "Postbus 90200, 3509 BE Utrecht, Netherlands",
+      "email": "coordinator.avg.kmar@mindef.nl",
+      "note": ""
+    },
+    {
+      "country": "Netherlands",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Dutch Data Protection Authority (Autoriteit Persoonsgegevens)",
+      "address": "",
+      "email": "",
+      "website": "https://autoriteitpersoonsgegevens.nl"
+    },
+    {
+      "country": "Norway",
+      "role": "data_controller",
+      "primary": true,
+      "name": "National Police Directorate (Politidirektoratet)",
+      "address": "Postboks 2090 Vika, 0125 Oslo, Norway",
+      "email": "Behandlingsansvarlige.Grense@politiet.no",
+      "note": ""
+    },
+    {
+      "country": "Norway",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Norwegian Data Protection Authority (Datatilsynet)",
+      "address": "",
+      "email": "",
+      "website": "https://www.datatilsynet.no"
+    },
+    {
+      "country": "Poland",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Commander-in-Chief of the Border Guard (Komendant Główny Straży Granicznej)",
+      "address": "al. Niepodległości 100, 02-585 Warsaw, Poland",
+      "email": "nu.ees@strazgraniczna.pl",
+      "note": ""
+    },
+    {
+      "country": "Poland",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "President of the Personal Data Protection Office (UODO)",
+      "address": "",
+      "email": "kancelaria@uodo.gov.pl",
+      "website": ""
+    },
+    {
+      "country": "Portugal",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Border and Foreigners Coordination Unit (UCFE)",
+      "address": "Av. Defensores de Chaves 6, 1049-063 Lisboa, Portugal",
+      "email": "ucfe.gabinete@ssi.gov.pt",
+      "note": ""
+    },
+    {
+      "country": "Portugal",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "CNPD – Comissão Nacional de Proteção de Dados",
+      "address": "",
+      "email": "geral@cnpd.pt",
+      "website": ""
+    },
+    {
+      "country": "Romania",
+      "role": "data_controller",
+      "primary": true,
+      "name": "General Inspectorate of Border Police",
+      "address": "42C Geniului Blvd, District 6, 060117 Bucharest, Romania",
+      "email": "pfr@igpf.ro",
+      "note": ""
+    },
+    {
+      "country": "Romania",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "National Supervisory Authority for Personal Data Processing",
+      "address": "",
+      "email": "anspdcp@dataprotection.ro",
+      "website": ""
+    },
+    {
+      "country": "Slovakia",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Bureau of Border and Foreign Police, Presidium of the Police Force",
+      "address": "Pribinova 2, 812 72 Bratislava, Slovakia",
+      "email": "ees.slovakia@minv.sk",
+      "note": ""
+    },
+    {
+      "country": "Slovakia",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Office for Personal Data Protection",
+      "address": "",
+      "email": "statny.dozor@pdp.gov.sk",
+      "website": ""
+    },
+    {
+      "country": "Slovenia",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Police, Ministry of the Interior (Policija)",
+      "address": "Štefanova 2, 1501 Ljubljana, Slovenia",
+      "email": "GP.POLICIJA@POLICIJA.SI",
+      "note": ""
+    },
+    {
+      "country": "Slovenia",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Information Commissioner",
+      "address": "",
+      "email": "GP.IP@IP-RS.SI",
+      "website": ""
+    },
+    {
+      "country": "Spain",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Comisaría General de Extranjería y Fronteras (General Commissioner for Aliens and Borders)",
+      "address": "c/ General Pardiñas 90, 28006 Madrid, Spain",
+      "email": "policianacional.dpd@policia.es",
+      "note": "Data Protection Officer address (no email is listed for the controller)."
+    },
+    {
+      "country": "Spain",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Spanish Data Protection Agency (AEPD)",
+      "address": "",
+      "email": "",
+      "website": "https://www.aepd.es"
+    },
+    {
+      "country": "Sweden",
+      "role": "data_controller",
+      "primary": true,
+      "name": "Police Authority – National Border Police Division (Polismyndigheten)",
+      "address": "Department of National Operations, SE-106 75 Stockholm, Sweden",
+      "email": "granspolisenheten.noa.kansli@polisen.se",
+      "note": ""
+    },
+    {
+      "country": "Sweden",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Swedish Authority for Privacy Protection (IMY)",
+      "address": "",
+      "email": "imy@imy.se",
+      "website": ""
+    },
+    {
+      "country": "Switzerland",
+      "role": "data_controller",
+      "primary": true,
+      "name": "State Secretariat for Migration SEM – Data Protection Officer",
+      "address": "Quellenweg 6, CH-3003 Berne, Switzerland",
+      "email": "dsbo@sem.admin.ch",
+      "note": ""
+    },
+    {
+      "country": "Switzerland",
+      "role": "supervisory_authority",
+      "primary": true,
+      "name": "Federal Data Protection and Information Commissioner (FDPIC)",
+      "address": "",
+      "email": "",
+      "website": "https://www.edoeb.admin.ch"
+    }
+  ]
+}

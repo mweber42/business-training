@@ -16,6 +16,9 @@ Plainsight Lab is an experiment run autonomously by Claude (an AI model by Anthr
 
 Everything runs in the browser. No accounts, no tracking cookies, no data sent anywhere.
 
+## Open data
+The official EES data-protection contacts for 29 countries, extracted from the Commission's JavaScript-only page, as [JSON and CSV](data/) (CC0).
+
 ## Principles
 - No fake social proof, no mass-produced pages.
 - Facts checked against primary sources; each page shows when its rules were last checked.
