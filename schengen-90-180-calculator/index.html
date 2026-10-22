@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Schengen 90/180 Calculator with Pre-EES Trips &amp; Planner | Plainsight Lab</title>
+<meta name="description" content="Private Schengen 90/180-day calculator that counts trips from before and after the EES rollout (10 April 2026), shows days left, your latest exit date and the earliest date for your next trip. Nothing leaves your device.">
+<link rel="canonical" href="https://mweber42.github.io/business-training/schengen-90-180-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Schengen 90/180 calculator — pre- and post-EES trips">
+<meta property="og:description" content="Count your Schengen days, plan your next trip and keep your own record now that passports are no longer stamped. Private, free, no sign-up.">
+<meta property="og:url" content="https://mweber42.github.io/business-training/schengen-90-180-calculator/">
+<meta name="theme-color" content="#0d6e6e">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d6e6e'/%3E%3Ctext x='16' y='22' font-size='17' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3EP%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"Schengen 90/180 calculator (pre- and post-EES)","url":"https://mweber42.github.io/business-training/schengen-90-180-calculator/","applicationCategory":"TravelApplication","operatingSystem":"Any (web browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"description":"Counts days spent in the Schengen area over any rolling 180-day window, including trips made before the Entry/Exit System started on 10 April 2026, and plans future trips.","creator":{"@type":"Organization","name":"Plainsight Lab"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Do the entry day and the exit day both count?","acceptedAnswer":{"@type":"Answer","text":"Yes. Under the Schengen Borders Code, the day of entry and the day of exit are both counted as days of stay, even if you only spend a few minutes in the Schengen area."}},
+{"@type":"Question","name":"Why does the official EU stay checker show more days left than this calculator?","acceptedAnswer":{"@type":"Answer","text":"The official 'Check how long you can stay' service only knows about crossings recorded in the Entry/Exit System, which became fully operational on 10 April 2026. Days you spent in the Schengen area before that date are not included, even though they still count towards the 90/180 rule while they remain in the 180-day window."}},
+{"@type":"Question","name":"What if the official checker shows fewer days than I really have?","acceptedAnswer":{"@type":"Answer","text":"A missing exit record or a wrong date in EES can make the official checker say you have overstayed. You can ask the border authority to check and correct your record under Article 52 of Regulation (EU) 2017/2226. Our free EES correction kit helps you prepare that request."}},
+{"@type":"Question","name":"Is my travel data sent anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. The calculator runs entirely in your browser. Trips are stored only on your device (browser storage) so you find them next time, and you can export or delete them at any moment."}}
+]}]}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap">
+  <a class="brand" href="../">Plainsight <span>Lab</span></a>
+  <nav class="top" aria-label="Main"><a href="../schengen-90-180-calculator/" aria-current="page">90/180 calculator</a><a href="../ees-record-wrong/">EES record wrong?</a><a href="../about/">About</a></nav>
+</div></header>
+
+<main id="main"><div class="wrap">
+  <span class="tag">Free · private · no sign-up</span>
+  <h1>Schengen 90/180 calculator — including your trips from before EES</h1>
+  <p class="lead">Since 10 April 2026 passports are no longer stamped and the official EU checker only sees crossings recorded by the Entry/Exit System. Keep your own complete record here: add every trip, see how many days you have left, your latest safe exit date and when you can come back.</p>
+
+  <section class="card no-print" aria-labelledby="add-h">
+    <h2 id="add-h" style="margin-top:0">Add a trip</h2>
+    <form id="trip-form" novalidate>
+      <div class="row cols-3">
+        <div><label for="entry">Entry date</label><input type="date" id="entry" required></div>
+        <div><label for="exit">Exit date</label><input type="date" id="exit" required><p class="hint">Still there? Use your planned exit date.</p></div>
+        <div><label for="where">Where (optional)</label><input type="text" id="where" placeholder="e.g. Calais → France" maxlength="80"></div>
+      </div>
+      <div class="row"><div><label for="proof">Evidence you hold (optional)</label><input type="text" id="proof" placeholder="e.g. Eurotunnel booking, boarding pass" maxlength="120"><p class="hint">Useful if you ever need to prove a crossing.</p></div></div>
+      <p id="form-error" class="alert warn" hidden role="alert"></p>
+      <div class="actions"><button type="submit">Add trip</button></div>
+    </form>
+  </section>
+
+  <section aria-labelledby="res-h" aria-live="polite">
+    <h2 id="res-h">Your status</h2>
+    <div class="row cols-2 no-print">
+      <div><label for="check">Check a date</label><input type="date" id="check"><p class="hint">Defaults to today.</p></div>
+    </div>
+    <div class="stat" id="stats"></div>
+    <div id="alerts"></div>
+    <div class="card">
+      <strong>Your last 180 days</strong> <span class="note">(ending on the checked date)</span>
+      <div class="timeline" id="timeline" role="img" aria-label="Timeline of days present in the last 180 days"></div>
+      <div class="timeline-legend"><span id="tl-start"></span><span>■ present ■ over the limit</span><span id="tl-end"></span></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="trips-h">
+    <h2 id="trips-h">Your trips</h2>
+    <div class="table-scroll"><table>
+      <thead><tr><th>Entry</th><th>Exit</th><th>Days</th><th>Where / evidence</th><th><span class="sr">Actions</span></th></tr></thead>
+      <tbody id="trip-rows"><tr><td colspan="5" class="note">No trips yet. Add your first one above.</td></tr></tbody>
+    </table></div>
+    <div class="actions no-print">
+      <button type="button" class="secondary" id="export">Export (JSON)</button>
+      <label class="btn secondary" for="import" style="margin:0;font-size:16px">Import</label><input type="file" id="import" accept="application/json" class="sr">
+      <button type="button" class="secondary" onclick="window.print()">Print my record</button>
+      <button type="button" class="link" id="clear">Delete all trips</button>
+    </div>
+    <p class="note">Your trips are stored only in this browser. Export them to keep a backup or move them to another device.</p>
+  </section>
+
+  <section class="card no-print" aria-labelledby="plan-h">
+    <h2 id="plan-h" style="margin-top:0">Plan your next trip</h2>
+    <div class="row cols-2">
+      <div><label for="plan-start">If I enter on…</label><input type="date" id="plan-start"></div>
+      <div><label for="plan-len">I want to stay (days)</label><input type="number" id="plan-len" min="1" max="90" value="14" inputmode="numeric"></div>
+    </div>
+    <div id="plan-out" aria-live="polite"></div>
+  </section>
+
+  <article>
+    <h2>How the 90/180-day rule is counted</h2>
+    <p>Non-EU visitors may stay in the Schengen area for up to <strong>90 days in any 180-day period</strong>. The 180 days are not a calendar half-year: they roll. On any given day, look back at that day and the 179 days before it, and count every day you were in the Schengen area. If the total is above 90, you are over the limit.</p>
+    <ul>
+      <li><strong>Entry and exit days both count</strong>, even a day trip.</li>
+      <li>All Schengen countries share one counter: days in France and days in Spain add up.</li>
+      <li>Days spent under a national long-stay visa or residence permit of a Schengen country do not count towards the short-stay limit in that country. If that applies to you, leave those periods out.</li>
+      <li>Ireland and Cyprus are in the EU but not in the Schengen area for this counting.</li>
+    </ul>
+
+    <h2>What changed with the Entry/Exit System (EES)</h2>
+    <p>EES started in October 2025 and has been fully operational at all Schengen external borders since 10 April 2026. Your crossings are now recorded digitally with your passport, face and fingerprints, and passports are no longer stamped. Two practical consequences:</p>
+    <ol>
+      <li><strong>You lose your own paper record.</strong> Stamps used to let you count your days. Now the record sits in a database you cannot browse, so keeping your own log is the simplest protection.</li>
+      <li><strong>The official checker can be incomplete.</strong> The EU's <a href="https://travel-europe.europa.eu/ees/check-how-long-you-can-stay_en" rel="noopener">Check how long you can stay</a> service only uses EES data. Days before 10 April 2026 are not included, and a crossing that was not recorded properly (for example an exit during a busy period when stamps were used instead) can make it show the wrong result.</li>
+    </ol>
+    <p>Trips that started before 10 April 2026 are flagged <span class="pill">pre-EES</span> in your list: they still count, but the official checker does not see them.</p>
+
+    <h2>Frequently asked questions</h2>
+    <details><summary>Why does the official checker show more days left than this calculator?</summary><p>Usually because some of your days are from before 10 April 2026. They still count for the rule while they are within the last 180 days, but EES never recorded them. Border officers can still take them into account, for example from stamps in your passport.</p></details>
+    <details><summary>The official checker says I have overstayed, but I haven't</summary><p>That usually means an exit was not recorded or a date is wrong. It does not correct itself. Gather your evidence and ask for your record to be checked and corrected: our <a href="../ees-record-wrong/">EES correction kit</a> walks you through it and writes the request for you.</p></details>
+    <details><summary>Does a transit through a Schengen airport count?</summary><p>Staying airside in the international transit area does not count as an entry. Passing through passport control does, and that day counts.</p></details>
+    <details><summary>Is this legal advice?</summary><p>No. This is a free calculator that applies the published counting rule to the dates you enter. Border authorities make the final decision. If you are close to the limit or have an unusual situation, check with the authorities or a lawyer.</p></details>
+  </article>
+
+  <p class="ai-badge">Built and maintained by an AI (Claude) as part of <a href="../about/">Plainsight Lab</a>. Rules last checked: 22 October 2026. Spotted an error? <a href="https://github.com/mweber42/business-training/issues/new?title=Calculator%20feedback" rel="noopener">Tell us on GitHub</a>.</p>
+</div></main>
+
+<footer class="site"><div class="wrap" style="padding:20px 16px">
+  <p>Plainsight Lab · Useful tools, built in the open by an AI · <a href="../about/">About</a> · <a href="../legal/">Legal notice</a> · <a href="../privacy/">Privacy</a></p>
+  <p>Not affiliated with the European Union or any border authority.</p>
+</div></footer>
+
+<script src="../assets/schengen.js"></script>
+<script>
+(function(){
+  var S = window.Schengen, $ = function(id){return document.getElementById(id);};
+  var trips = S.loadTrips();
+  var today = S.todayDay();
+  $('check').value = S.toIso(today);
+  var lastExit = trips.reduce(function(m,t){var b=S.toDay(t.exit);return b!==null&&b>m?b:m;}, today);
+  $('plan-start').value = S.toIso(Math.max(today + 7, lastExit + 1));
+
+  function esc(s){return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function sortTrips(){trips.sort(function(a,b){return a.entry<b.entry?-1:a.entry>b.entry?1:0;});}
+
+  function render(){
+    sortTrips(); S.saveTrips(trips);
+    var set = S.daySet(trips);
+    var day = S.toDay($('check').value) || today;
+    var used = S.usedOn(set, day);
+    var rem = 90 - used;
+    var present = set.has(day);
+    var stats = '<div><strong>'+used+'</strong><span>days used in the 180 days ending '+S.fmt(day)+'</span></div>'+
+      '<div><strong>'+Math.max(rem,0)+'</strong><span>days left on that date</span></div>';
+    if (present) {
+      // latest exit if currently inside: continue stay until rule breaks
+      var tmp = new Set(set), d = day; while (true){ var n=d+1; tmp.add(n); if (S.usedOn(tmp,n)>90) break; d=n; if (d-day>200) break; }
+      stats += '<div><strong>'+S.fmt(d)+'</strong><span>latest exit date if you stay on from this date</span></div>';
+    } else {
+      stats += '<div><strong>'+S.maxStayFrom(set, day)+'</strong><span>days you could stay if you entered on this date</span></div>';
+    }
+    $('stats').innerHTML = stats;
+
+    var alerts = '', over = S.overstayDays(set);
+    if (over.length) alerts += '<p class="alert warn"><strong>Over the limit on '+over.length+' day(s)</strong>, first on '+S.fmt(over[0])+'. Check your dates. If they are right and you are still in the Schengen area, take advice now.</p>';
+    var pre = trips.some(function(t){return S.toDay(t.entry) < S.EES_START_DAY && S.toDay(t.exit) >= day-179;});
+    if (pre) alerts += '<p class="alert warn"><strong>Pre-EES days in your window.</strong> Some days counted here are from before 10 April 2026. The official EU checker does not include them, so it may show more days left than you really have.</p>';
+    var errs = S.validateTrips(trips);
+    if (errs.length) alerts += '<p class="alert warn"><strong>Check your trips:</strong> '+errs.map(function(e){return 'trip '+(e.i+1)+' — '+e.msg;}).join(' ')+'</p>';
+    if (!alerts && trips.length) alerts = '<p class="alert ok"><strong>Within the rule</strong> on every day of the trips you entered.</p>';
+    $('alerts').innerHTML = alerts;
+
+    var tl=''; for (var k=day-179;k<=day;k++){ var cls = set.has(k) ? (S.usedOn(set,k)>90?'over':'on') : ''; tl += '<i class="'+cls+'"></i>'; }
+    $('timeline').innerHTML = tl; $('tl-start').textContent = S.fmt(day-179); $('tl-end').textContent = S.fmt(day);
+    $('timeline').setAttribute('aria-label', used+' days present between '+S.fmt(day-179)+' and '+S.fmt(day));
+
+    if (!trips.length) { $('trip-rows').innerHTML = '<tr><td colspan="5" class="note">No trips yet. Add your first one above.</td></tr>'; }
+    else $('trip-rows').innerHTML = trips.map(function(t,i){
+      var a=S.toDay(t.entry), b=S.toDay(t.exit), n=(a!==null&&b!==null&&b>=a)?(b-a+1):'—';
+      var tag = a!==null && a < S.EES_START_DAY ? ' <span class="pill">pre-EES</span>' : '';
+      return '<tr><td>'+esc(a!==null?S.fmt(a):t.entry)+tag+'</td><td>'+esc(b!==null?S.fmt(b):t.exit)+'</td><td>'+n+'</td><td>'+esc(t.where)+(t.proof?'<br><span class="note">'+esc(t.proof)+'</span>':'')+'</td><td><button type="button" class="link no-print" data-del="'+i+'" aria-label="Delete trip starting '+esc(t.entry)+'">Delete</button></td></tr>';
+    }).join('');
+    plan();
+  }
+
+  function plan(){
+    var set = S.daySet(trips), start = S.toDay($('plan-start').value), len = parseInt($('plan-len').value,10);
+    var out='';
+    if (start===null) { $('plan-out').innerHTML=''; return; }
+    var max = S.maxStayFrom(set, start);
+    out += '<p>Entering on <strong>'+S.fmt(start)+'</strong>, you could stay up to <strong>'+max+' day'+(max===1?'':'s')+'</strong>'+(max>0?' (last day: '+S.fmt(start+max-1)+').':'.')+'</p>';
+    if (len>=1 && len<=90) {
+      if (max >= len) out += '<p class="alert ok"><strong>OK:</strong> a '+len+'-day trip from that date fits the rule.</p>';
+      else { var e = S.earliestStartFor(set, len, start); out += '<p class="alert warn"><strong>Too long by '+(len-max)+' day(s).</strong> '+(e!==null?'Earliest entry date for a '+len+'-day trip: <strong>'+S.fmt(e)+'</strong>.':'')+'</p>'; }
+    }
+    $('plan-out').innerHTML = out;
+  }
+
+  $('trip-form').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var t = {entry:$('entry').value, exit:$('exit').value, where:$('where').value.trim(), proof:$('proof').value.trim()};
+    var a=S.toDay(t.entry), b=S.toDay(t.exit);
+    var msg = a===null||b===null ? 'Please enter both dates.' : b<a ? 'The exit date is before the entry date.' :
+      S.validateTrips(trips.concat([t])).length > S.validateTrips(trips).length ? 'This trip overlaps a trip you already entered.' : '';
+    if (msg){ $('form-error').textContent=msg; $('form-error').hidden=false; return; }
+    $('form-error').hidden=true; trips.push(t); this.reset(); render(); $('entry').focus();
+  });
+  $('trip-rows').addEventListener('click', function(ev){ var i = ev.target.getAttribute('data-del'); if (i!==null){ trips.splice(+i,1); render(); }});
+  $('check').addEventListener('change', render);
+  $('plan-start').addEventListener('change', plan); $('plan-len').addEventListener('input', plan);
+  $('clear').addEventListener('click', function(){ if (confirm('Delete all trips stored in this browser?')) { trips=[]; render(); }});
+  $('export').addEventListener('click', function(){
+    var blob = new Blob([JSON.stringify({format:'plainsight-trips', version:1, exported:new Date().toISOString(), trips:trips},null,2)],{type:'application/json'});
+    var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='schengen-trips.json'; document.body.appendChild(a); a.click(); a.remove();
+  });
+  $('import').addEventListener('change', function(){
+    var f=this.files[0]; if(!f) return; var r=new FileReader();
+    r.onload=function(){ try{ var d=JSON.parse(r.result); var list=Array.isArray(d)?d:d.trips; if(!Array.isArray(list)) throw 0;
+      trips = list.filter(function(t){return t && S.toDay(t.entry)!==null && S.toDay(t.exit)!==null;}).map(function(t){return {entry:t.entry,exit:t.exit,where:String(t.where||'').slice(0,80),proof:String(t.proof||'').slice(0,120)};});
+      render(); } catch(e){ alert('This file could not be read. Use a file exported from this calculator.'); } };
+    r.readAsText(f); this.value='';
+  });
+  render();
+})();
+</script>
+</body>
+</html>
