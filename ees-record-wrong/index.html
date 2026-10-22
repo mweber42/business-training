@@ -50,7 +50,7 @@
   <ol class="steps">
     <li><strong>Pin down the wrong crossing.</strong> Date, border point, direction, and what should have been recorded. Screenshot the result of the EU's <a href="https://travel-europe.europa.eu/ees/check-how-long-you-can-stay_en" rel="noopener">Check how long you can stay</a> service, with the date visible.</li>
     <li><strong>Gather evidence</strong> showing where you really were: boarding passes, tickets, ferry or tunnel bookings, hotel or car-hire confirmations, card payments outside the Schengen area.</li>
-    <li><strong>Choose the authority.</strong> You may apply to any participating country, but the country whose border made or missed the record is usually the right one. Find its address on the official <a href="https://travel-europe.europa.eu/ees/contact-details-for-data-protection-matters" rel="noopener">EES data-protection contact list</a>.</li>
+    <li><strong>Choose the authority.</strong> You may apply to any participating country, but the country whose border made or missed the record is usually the right one. The generator below shows its address and email, taken from the official <a href="https://travel-europe.europa.eu/ees/contact-details-for-data-protection-matters" rel="noopener">EES data-protection contact list</a>.</li>
     <li><strong>Send your request</strong> under Article 52 of Regulation (EU) 2017/2226: access to your data and rectification of the wrong record. Generate it below.</li>
     <li><strong>Follow up.</strong> Keep proof of sending. No answer after 45 days? Chase in writing, then complain to that country's data protection authority.</li>
   </ol>
@@ -87,6 +87,7 @@
         <div><label for="lang">Letter language</label><select id="lang"><option value="en">English</option><option value="fr">Français</option></select></div>
       </div>
 
+      <div id="contact" class="alert ok" aria-live="polite"></div>
       <h3>4. Your identity</h3>
       <div class="row cols-2">
         <div><label for="name">Full name (as in passport)</label><input type="text" id="name" autocomplete="name" maxlength="100"></div>
@@ -117,10 +118,11 @@
 
   <section id="out" hidden aria-labelledby="out-h">
     <h2 id="out-h">Your request</h2>
-    <p class="note no-print">Read it carefully, adjust anything that is not exactly right, then send it by email or registered post with copies (never originals) of your evidence.</p>
+    <p class="note no-print">Read it carefully, adjust anything that is not exactly right, then send it by email or registered post with copies (never originals) of your evidence. “Open in my email app” fills in the address and subject: paste the text, attach your evidence, and send it yourself.</p>
     <pre class="letter" id="letter" tabindex="0"></pre>
     <div class="actions no-print">
       <button type="button" id="copy">Copy text</button>
+      <a class="btn secondary" id="mail" href="#">Open in my email app</a>
       <button type="button" class="secondary" id="dl">Download (.txt)</button>
       <button type="button" class="secondary" onclick="window.print()">Print</button>
     </div>
@@ -159,6 +161,7 @@
 </div></footer>
 
 <script src="../assets/schengen.js"></script>
+<script src="../assets/ees-contacts.js"></script>
 <script>
 (function(){
   var S = window.Schengen, $ = function(id){return document.getElementById(id);};
@@ -180,6 +183,19 @@
     : 'Tip: add your trips in the <a href="../schengen-90-180-calculator/">90/180 calculator</a> first (on this device) and they will be added to your request as a dated chronology.';
 
   try { if (new URLSearchParams(location.search).get('lang')==='fr') $('lang').value='fr'; } catch(e){}
+  var CT = window.EESContacts.CONTACTS;
+  function ctrl(){ var c = CT[$('country').value]; if(!c) return null; var i = +($('ctrl') && $('ctrl').value || 0); return c.c[i] || c.c[0]; }
+  function showContact(){
+    var c = CT[$('country').value], h='';
+    if (!c) { $('contact').innerHTML=''; return; }
+    if (c.c.length>1) h += '<label for="ctrl">Authority</label><select id="ctrl">'+c.c.map(function(x,i){return '<option value="'+i+'">'+x.n+'</option>';}).join('')+'</select>'+(c.note?'<p class="hint">'+c.note+'</p>':'');
+    var x = ctrl();
+    h += '<p style="margin:8px 0 0"><strong>Send your request to:</strong> '+x.n+'<br>'+x.a+'<br>Email: <a href="mailto:'+x.e+'">'+x.e+'</a>'+(x.eNote?' <span class="note">('+x.eNote+')</span>':'')+'</p>';
+    h += '<p class="note" style="margin:6px 0 0">If you get no answer: '+c.s.n+(c.s.e?' — '+c.s.e:'')+(c.s.w?' — <a href="'+c.s.w+'" rel="noopener">'+c.s.w.replace('https://','')+'</a>':'')+'. Source: <a href="'+window.EESContacts.SOURCE+'" rel="noopener">official EES contact list</a>, checked '+window.EESContacts.EXTRACTED+'.</p>';
+    $('contact').innerHTML = h;
+    if ($('ctrl')) $('ctrl').addEventListener('change', function(){ var v=this.value; showContact(); $('ctrl').value=v; });
+  }
+  $('country').addEventListener('change', showContact); showContact();
   $('problem').addEventListener('change', function(){ $('crossing-block').hidden = this.value==='access'; });
 
   function v(id){ return ($(id).value||'').trim(); }
@@ -192,7 +208,9 @@
     var lines = [];
     lines.push(name); if (v('addr')) lines.push(v('addr')); if (v('email')) lines.push(v('email'));
     lines.push('');
-    lines.push(fr ? 'À l’autorité compétente en matière de protection des données EES — '+(FR[country]||country) : 'To: Competent authority for EES data protection matters — '+country);
+    var ct = ctrl();
+    if (ct) { lines.push((fr?'À : ':'To: ')+ct.n); lines.push(ct.a); }
+    else lines.push(fr ? 'À l’autorité compétente en matière de protection des données EES — '+(FR[country]||country) : 'To: Competent authority for EES data protection matters — '+country);
     lines.push(fr ? 'Fait le '+today : 'Date: '+today);
     lines.push('');
     lines.push(fr ? 'Objet : Demande d’accès et de rectification de mes données dans le système d’entrée/sortie (EES) — article 52 du règlement (UE) 2017/2226'
@@ -256,6 +274,7 @@
   $('gen').addEventListener('submit', function(e){
     e.preventDefault();
     $('letter').textContent = build();
+    var ct=ctrl(); if(ct){ $('mail').href='mailto:'+ct.e+'?subject='+encodeURIComponent($('lang').value==='fr'?'Demande d’accès et de rectification EES – article 52 du règlement (UE) 2017/2226':'EES access and rectification request – Article 52 of Regulation (EU) 2017/2226'); $('mail').hidden=false; } else $('mail').hidden=true;
     $('out').hidden = false; $('out').scrollIntoView({behavior:'smooth'}); $('letter').focus({preventScroll:true});
   });
   $('copy').addEventListener('click', function(){
