@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Indemnisation retard ou annulation de vol (règlement 261/2004) : calcul + lettre gratuite, sans commission | Plainsight Lab</title>
+<meta name="description" content="Vol retardé de 3 h ou plus, annulé ou surréservé ? Vérifiez en une minute si la compagnie vous doit 250, 400 ou 600 €, puis réclamez-le vous-même avec une lettre gratuite, sans laisser 25 à 35 % à une société de réclamation.">
+<link rel="canonical" href="https://mweber42.github.io/business-training/fr/indemnisation-retard-avion/">
+<link rel="alternate" hreflang="fr" href="https://mweber42.github.io/business-training/fr/indemnisation-retard-avion/">
+<link rel="alternate" hreflang="en" href="https://mweber42.github.io/business-training/flight-delay-compensation/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vol retardé ou annulé ? Calculez votre indemnisation et réclamez-la vous-même">
+<meta property="og:description" content="Calcul et lettre de réclamation gratuits. Gardez 100 % de vos 250 à 600 €.">
+<meta property="og:url" content="https://mweber42.github.io/business-training/fr/indemnisation-retard-avion/">
+<meta property="og:image" content="https://mweber42.github.io/business-training/assets/og-flight.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0d6e6e">
+<link rel="stylesheet" href="../../assets/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d6e6e'/%3E%3Ctext x='16' y='22' font-size='17' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3EP%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"fr","mainEntity":[
+{"@type":"Question","name":"Combien la compagnie doit-elle pour un vol retardé ?","acceptedAnswer":{"@type":"Answer","text":"Si vous arrivez à destination finale avec 3 heures de retard ou plus, le règlement 261/2004 prévoit 250 € jusqu’à 1 500 km, 400 € pour les vols intra-UE de plus de 1 500 km et les autres vols de 1 500 à 3 500 km, et 600 € au-delà (300 € si le retard est entre 3 et 4 heures), sauf circonstances extraordinaires."}},
+{"@type":"Question","name":"Les nouvelles règles européennes de 2026 s’appliquent-elles déjà ?","acceptedAnswer":{"@type":"Answer","text":"Non. Le règlement (UE) 2026/2202 est entré en vigueur le 22 octobre 2026 mais ne s’applique qu’à partir du 23 octobre 2027."}},
+{"@type":"Question","name":"Faut-il passer par une société de réclamation ?","acceptedAnswer":{"@type":"Answer","text":"Non. Vous pouvez réclamer gratuitement auprès de la compagnie. Les sociétés de réclamation conservent une part de l’indemnisation, souvent de l’ordre d’un quart à un tiers."}}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="site"><div class="wrap">
+  <a class="brand" href="../../">Plainsight <span>Lab</span></a>
+  <nav class="top" aria-label="Navigation"><a href="../../fr/calculateur-schengen-90-180/">Calculateur Schengen</a><a href="../../flight-delay-compensation/" hreflang="en">English</a></nav>
+</div></header>
+
+<main id="main"><div class="wrap">
+  <span class="tag">Gratuit · vous gardez 100 % · rien ne quitte votre appareil</span>
+  <h1>Vol retardé, annulé ou surréservé ? Vérifiez ce que la compagnie vous doit, puis réclamez-le vous-même</h1>
+  <p class="lead">Le règlement européen 261/2004 prévoit jusqu’à 600 € par passager. Les sociétés de réclamation en gardent une bonne part ; la compagnie doit vous payer directement si vous le demandez. Vérifiez votre cas en une minute et obtenez une lettre de réclamation prête à envoyer.</p>
+
+  <section class="card no-print" aria-labelledby="chk-h">
+    <h2 id="chk-h" style="margin-top:0">1. Votre vol</h2>
+    <form id="f" novalidate>
+      <datalist id="ap"></datalist>
+      <div class="row cols-2">
+        <div><label for="from">Départ (aéroport où commençait votre voyage)</label><input id="from" list="ap" placeholder="ex. CDG ou Paris" autocomplete="off"></div>
+        <div><label for="to">Arrivée (destination finale)</label><input id="to" list="ap" placeholder="ex. JFK ou New York" autocomplete="off"><p class="hint">Avec correspondance sur une même réservation, indiquez la destination finale.</p></div>
+      </div>
+      <p id="route" class="note" aria-live="polite"></p>
+      <div class="row cols-2">
+        <div><label for="event">Que s’est-il passé ?</label>
+          <select id="event"><option value="delay">Retard</option><option value="cancel">Annulation</option><option value="denied">Refus d’embarquement (surréservation)</option></select></div>
+        <div id="carrier-wrap" hidden><label for="carrier">La compagnie est-elle européenne (UE, Islande, Norvège, Liechtenstein ou Suisse) ?</label>
+          <select id="carrier"><option value="unknown">Je ne sais pas</option><option value="yes">Oui</option><option value="no">Non</option></select>
+          <p class="hint">Pour un vol arrivant en Europe depuis l’extérieur, le règlement ne s’applique qu’aux compagnies européennes.</p></div>
+      </div>
+      <div id="delay-block" class="row cols-2">
+        <div><label for="delay">Retard à l’arrivée à destination finale (en heures)</label><input id="delay" type="number" min="0" max="72" step="0.25" inputmode="decimal" placeholder="ex. 3,5"><p class="hint">Heure d’arrivée = ouverture des portes de l’avion.</p></div>
+      </div>
+      <div id="cancel-block" hidden>
+        <div class="row cols-2">
+          <div><label for="notice">Quand avez-vous été prévenu de l’annulation ?</label>
+            <select id="notice"><option value="<7">Moins de 7 jours avant le départ</option><option value="7-13">7 à 13 jours avant</option><option value="14+">14 jours ou plus avant</option></select></div>
+          <div><label for="rerouted">Vous a-t-on placé sur un autre vol ?</label><select id="rerouted"><option value="no">Non / remboursement</option><option value="yes">Oui</option></select></div>
+        </div>
+        <div class="row cols-2" id="reroute-block" hidden>
+          <div><label for="earlier">Le nouveau vol est parti plus tôt de (heures)</label><input id="earlier" type="number" min="0" step="0.25" value="0" inputmode="decimal"></div>
+          <div><label for="later">Le nouveau vol est arrivé plus tard de (heures)</label><input id="later" type="number" min="0" step="0.25" value="0" inputmode="decimal"></div>
+        </div>
+      </div>
+      <div class="row cols-2">
+        <div><label for="cause">Motif donné par la compagnie</label>
+          <select id="cause"><option value="unknown">Aucun / je ne sais pas</option><option value="technical">Problème technique</option><option value="ownstrike">Grève du personnel de la compagnie</option><option value="crew">Manque d’équipage / raisons opérationnelles</option><option value="weather">Météo</option><option value="atc">Contrôle aérien (restrictions ou grève)</option><option value="security">Risque de sûreté / fermeture d’aéroport</option></select></div>
+      </div>
+      <div class="actions"><button type="submit">Vérifier mon indemnisation</button></div>
+    </form>
+  </section>
+
+  <section id="result" aria-live="polite" hidden></section>
+
+  <section id="claim" class="card no-print" hidden aria-labelledby="claim-h">
+    <h2 id="claim-h" style="margin-top:0">2. Votre lettre de réclamation</h2>
+    <p class="note">Envoyez-la à la compagnie qui a opéré le vol (formulaire de réclamation en ligne ou service client). Vos informations ne sont ni enregistrées ni envoyées.</p>
+    <form id="cf" novalidate>
+      <div class="row cols-2">
+        <div><label for="airline">Compagnie qui a opéré le vol</label><input id="airline" maxlength="60"></div>
+        <div><label for="flightno">Numéro(s) de vol</label><input id="flightno" placeholder="ex. AF1234" maxlength="60"></div>
+      </div>
+      <div class="row cols-3">
+        <div><label for="fdate">Date du vol</label><input id="fdate" type="date"></div>
+        <div><label for="pnr">Référence de réservation</label><input id="pnr" maxlength="12" autocomplete="off"></div>
+        <div><label for="pax">Nombre de passagers</label><input id="pax" type="number" min="1" max="9" value="1" inputmode="numeric"></div>
+      </div>
+      <div class="row cols-2">
+        <div><label for="pname">Votre nom</label><input id="pname" autocomplete="name" maxlength="80"></div>
+        <div><label for="others">Autres passagers (noms)</label><input id="others" maxlength="200"></div>
+      </div>
+      <div class="row cols-2">
+        <div><label for="paddr">Adresse postale</label><textarea id="paddr" style="min-height:70px" autocomplete="street-address"></textarea></div>
+        <div><label for="pemail">E-mail</label><input id="pemail" type="email" autocomplete="email"></div>
+      </div>
+      <div class="actions"><button type="submit">Rédiger ma réclamation</button></div>
+    </form>
+    <div id="letter-out" hidden>
+      <pre class="letter" id="letter" tabindex="0"></pre>
+      <div class="actions"><button type="button" id="copy">Copier le texte</button><button type="button" class="secondary" onclick="window.print()">Imprimer</button></div>
+      <p id="copied" class="note" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <article>
+    <h2>Les règles en 60 secondes</h2>
+    <div class="table-scroll"><table>
+      <thead><tr><th>Distance du vol</th><th>Indemnisation</th><th>Réduite de 50 % si réacheminé et arrivé avec moins de</th></tr></thead>
+      <tbody>
+        <tr><td>Jusqu’à 1 500 km</td><td><strong>250 €</strong></td><td>2 heures de retard</td></tr>
+        <tr><td>Vol intra-UE de plus de 1 500 km, ou de 1 500 à 3 500 km</td><td><strong>400 €</strong></td><td>3 heures</td></tr>
+        <tr><td>Plus de 3 500 km (hors vols intra-UE)</td><td><strong>600 €</strong></td><td>4 heures</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><strong>Vols concernés :</strong> tout vol au départ d’un aéroport de l’UE, d’Islande, de Norvège ou de Suisse, et les vols à destination de ces pays depuis l’extérieur si la compagnie est européenne. Les départements et régions d’outre-mer (Réunion, Antilles, Guyane, Mayotte) en font partie.</li>
+      <li><strong>Retard :</strong> 3 heures ou plus à destination finale (Cour de justice de l’UE, arrêt <em>Sturgeon</em>, C-402/07). Pour un vol de plus de 3 500 km hors UE, un retard de 3 à 4 heures donne la moitié (300 €).</li>
+      <li><strong>Annulation :</strong> indemnisation si vous avez été prévenu moins de 14 jours avant, sauf réacheminement dans des délais stricts.</li>
+      <li><strong>Circonstances extraordinaires</strong> (météo, décisions du contrôle aérien, risques de sûreté) : la compagnie est exonérée. Un <strong>problème technique</strong> ne l’exonère normalement pas, ni une grève de son propre personnel.</li>
+      <li><strong>Prise en charge</strong> (repas, boissons, hôtel si nécessaire) : due quelle que soit la cause. Gardez vos reçus.</li>
+    </ul>
+    <h2>Le nouveau règlement de 2026 : ce qui change, et quand</h2>
+    <p>Le règlement (UE) 2026/2202, qui réforme le règlement 261/2004, est entré en vigueur le 22 octobre 2026 mais ne s’applique qu’à partir du <strong>23 octobre 2027</strong>. D’ici là, votre réclamation relève des règles actuelles ci-dessus. Ensuite, les montants restent de 250, 400 et 600 €, il faudra réclamer dans les neuf mois et la compagnie aura 30 jours pour payer ou motiver son refus.</p>
+    <h2>Combien de temps pour réclamer ?</h2>
+    <p>Avec les règles actuelles, le délai dépend du pays où vous agissez : en France, 5 ans à compter du vol (prescription de droit commun). Réclamez sans attendre : les preuves sont plus faciles à réunir.</p>
+    <h2>Si la compagnie refuse ou ne répond pas</h2>
+    <ol>
+      <li>Relancez une fois par écrit en citant la règle (un problème technique n’est pas une circonstance extraordinaire).</li>
+      <li>Saisissez gratuitement le <a href="https://www.mtv.travel/" rel="noopener">Médiateur Tourisme et Voyage</a> si la compagnie y adhère, ou déposez une réclamation auprès de la DGAC pour un incident survenu en France.</li>
+      <li>Pour un montant jusqu’à 5 000 €, la procédure européenne de règlement des petits litiges ou le tribunal judiciaire sont ouverts sans avocat.</li>
+    </ol>
+    <p class="note">Sources : règlement (CE) n° 261/2004, articles 5 à 7 ; CJUE C-402/07 <em>Sturgeon</em>, C-549/07 <em>Wallentin-Hermann</em>, C-28/20 ; règlement (UE) 2026/2202 (Journal officiel de l’UE). Règles vérifiées le 22 octobre 2026. Données aéroports : OurAirports (domaine public). Ce n’est pas un conseil juridique.</p>
+  </article>
+
+  <p class="ai-badge">Conçu et maintenu par une IA (Claude) dans le cadre du <a href="../../about/">Plainsight Lab</a>. Sans commission ni lien affilié. Une erreur, ou une réponse d’une compagnie à partager ? <a href="https://github.com/mweber42/business-training/issues/new?title=Indemnisation%20vol%20FR" rel="noopener">Dites-le sur GitHub</a>.</p>
+</div></main>
+
+<footer class="site"><div class="wrap" style="padding:20px 16px">
+  <p>Plainsight Lab · Des outils utiles, construits en transparence par une IA · <a href="../../legal/">Mentions légales</a> · <a href="../../privacy/">Confidentialité</a></p>
+</div></footer>
+
+<script src="../../assets/airports.js"></script>
+<script src="../../assets/eu261.js"></script>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id);}, E=window.EU261, A=window.AIRPORTS, last=null;
+  var byCode={}; A.forEach(function(r){byCode[r[0]]=r;});
+  $('ap').innerHTML=A.map(function(r){return '<option value="'+r[0]+' — '+r[1].replace(/"/g,'')+(r[2]?' ('+r[2].replace(/"/g,'')+', '+r[3]+')':' ('+r[3]+')')+'">';}).join('');
+  function esc(s){return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function pick(v){ v=(v||'').trim(); var code=v.slice(0,3).toUpperCase(); if(byCode[code] && (v.length===3||v.charAt(3)===' ')) return byCode[code];
+    var q=v.toLowerCase(); if(q.length<3) return null; var m=A.filter(function(r){return r[2].toLowerCase()===q;}); if(!m.length) m=A.filter(function(r){return (r[1]+' '+r[2]).toLowerCase().indexOf(q)>=0;}); return m[0]||null; }
+  function route(){
+    var a=pick($('from').value), b=pick($('to').value);
+    $('carrier-wrap').hidden = !(a && b && !E.inScopeCountry(a[3]) && E.inScopeCountry(b[3]));
+    if(a&&b){ var km=Math.round(E.distanceKm([a[4],a[5]],[b[4],b[5]])); $('route').textContent=a[0]+' ('+a[2]+', '+a[3]+') → '+b[0]+' ('+b[2]+', '+b[3]+') : '+km.toLocaleString('fr-FR')+' km'; return {a:a,b:b,km:km}; }
+    $('route').textContent=''; return null;
+  }
+  ['from','to'].forEach(function(id){ $(id).addEventListener('change',route); $(id).addEventListener('blur',route); });
+  $('event').addEventListener('change',function(){ var e=this.value; $('delay-block').hidden=e!=='delay'; $('cancel-block').hidden=e!=='cancel'; if(e==='denied'){ $('cancel-block').hidden=false; $('notice').parentNode.hidden=true; } else $('notice').parentNode.hidden=false; });
+  $('rerouted').addEventListener('change',function(){ $('reroute-block').hidden=this.value!=='yes'; });
+
+  var R={
+    noscope:'Le règlement ne couvre pas ce vol : il ne partait pas d’Europe et la compagnie n’est pas européenne.',
+    uk:'Ce vol relève des règles britanniques (UK261), calquées sur le règlement européen avec 220, 350 ou 520 £. Réclamez auprès de la compagnie en citant le règlement 261/2004 tel que maintenu en droit britannique.',
+    under3h:'En dessous de 3 heures de retard à l’arrivée, pas d’indemnisation (mais repas et boissons étaient dus à partir de 2 heures ou plus selon la distance).',
+    notice14:'Une annulation annoncée 14 jours ou plus avant le départ ne donne pas droit à indemnisation. Vous gardez droit au remboursement ou au réacheminement.',
+    reroute_ok_7_13:'Pas d’indemnisation : prévenu 7 à 13 jours avant, avec un vol de remplacement parti au plus 2 h plus tôt et arrivé moins de 4 h plus tard.',
+    reroute_ok_lt7:'Pas d’indemnisation : prévenu moins de 7 jours avant, mais le vol de remplacement est parti au plus 1 h plus tôt et arrivé moins de 2 h plus tard.',
+    reduced_delay:'Long-courrier avec 3 à 4 heures de retard : l’indemnisation est divisée par deux.',
+    reduced_reroute:'Vous avez été réacheminé et êtes arrivé dans le délai prévu pour votre distance : la compagnie peut réduire l’indemnisation de moitié.',
+    technical:'Un problème technique n’est en principe pas une circonstance extraordinaire (CJUE, Wallentin-Hermann, C-549/07).',
+    ownstrike:'Une grève du propre personnel de la compagnie n’est pas une circonstance extraordinaire (CJUE, C-28/20).'
+  };
+  var W={
+    carrier:'Vérifiez si la compagnie détient une licence d’exploitation européenne : sinon, le règlement ne s’applique pas à ce vol entrant.',
+    extraordinary:'Météo, contrôle aérien et sûreté sont souvent des circonstances extraordinaires. La compagnie doit toutefois le prouver et montrer qu’elle a pris toutes les mesures raisonnables : demandez des précisions.',
+    voluntary:'Uniquement si l’embarquement vous a été refusé contre votre gré. Si vous vous êtes porté volontaire, c’est l’accord conclu qui s’applique.'
+  };
+
+  $('f').addEventListener('submit',function(ev){
+    ev.preventDefault(); var r=route(); var out=$('result');
+    if(!r){ out.hidden=false; out.innerHTML='<p class="alert warn">Choisissez les deux aéroports dans la liste (tapez un code comme CDG ou un nom de ville).</p>'; return; }
+    var e=$('event').value, cause=$('cause').value; if(cause==='crew') cause='unknown';
+    var input={fromCountry:r.a[3],toCountry:r.b[3],km:r.km,euCarrier:$('carrier').value,event:e,arrivalDelayH:parseFloat($('delay').value),
+      noticeDays:$('notice').value,reroute:(e!=='delay'&&$('rerouted').value==='yes')?{earlierDepH:parseFloat($('earlier').value)||0,laterArrH:parseFloat($('later').value)||0}:null,cause:cause};
+    if(e==='delay' && isNaN(input.arrivalDelayH)){ out.hidden=false; out.innerHTML='<p class="alert warn">Indiquez votre retard à l’arrivée, en heures.</p>'; return; }
+    var res=E.assess(input); last={input:input,res:res,r:r};
+    var h='';
+    if(res.amount>0){
+      var cls=res.eligible==='yes'?'ok':'warn';
+      h+='<div class="stat"><div><strong>'+res.amount+' €</strong><span>par passager'+(res.eligible==='yes'?', probablement dus':', peut-être dus')+'</span></div><div><strong>'+r.km.toLocaleString('fr-FR')+' km</strong><span>distance retenue</span></div></div>';
+      h+='<p class="alert '+cls+'"><strong>'+(res.eligible==='yes'?'Vous devriez avoir droit à une indemnisation.':'Vous pourriez avoir droit à une indemnisation.')+'</strong> Réclamez-la directement à la compagnie ci-dessous, c’est gratuit.</p>';
+    } else if(res.scope==='uk'){ h+='<p class="alert warn"><strong>Règles britanniques applicables.</strong></p>'; }
+    else h+='<p class="alert warn"><strong>Pas d’indemnisation au titre du règlement européen dans ce cas.</strong></p>';
+    (res.reasons||[]).forEach(function(k){ if(R[k]) h+='<p>'+esc(R[k])+'</p>'; });
+    (res.warnings||[]).forEach(function(k){ if(W[k]) h+='<p class="note">⚠ '+esc(W[k])+'</p>'; });
+    out.innerHTML='<h2>Résultat</h2>'+h; out.hidden=false;
+    $('claim').hidden = !(res.amount>0);
+    out.scrollIntoView({behavior:'smooth'});
+  });
+
+  function v(id){return ($(id).value||'').trim();}
+  $('cf').addEventListener('submit',function(ev){
+    ev.preventDefault(); if(!last) return;
+    var i=last.input, res=last.res, r=last.r, n=Math.max(1,parseInt(v('pax'),10)||1), total=res.amount*n;
+    var dt=v('fdate')?new Date(v('fdate')+'T00:00:00Z').toLocaleDateString('fr-FR',{timeZone:'UTC',day:'numeric',month:'long',year:'numeric'}):'[date]';
+    var what = i.event==='delay' ? 'est arrivé à ma destination finale avec '+String(i.arrivalDelayH).replace('.',',')+' heures de retard' : i.event==='cancel' ? 'a été annulé (information reçue '+({'<7':'moins de 7 jours','7-13':'7 à 13 jours','14+':'14 jours ou plus'})[i.noticeDays]+' avant le départ)'+(i.reroute?' et le vol de remplacement est arrivé '+String(i.reroute.laterArrH).replace('.',',')+' heures après l’horaire prévu':'') : 'a été opéré sans moi : l’embarquement m’a été refusé contre ma volonté';
+    var L=[];
+    L.push(v('pname')||'[Votre nom]'); if(v('paddr')) L.push(v('paddr')); if(v('pemail')) L.push(v('pemail')); L.push('');
+    L.push('À : '+(v('airline')||'[Compagnie]')+' — Service clients'); L.push('Le '+new Date().toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'})); L.push('');
+    L.push('Objet : Demande d’indemnisation au titre du règlement (CE) n° 261/2004 — vol '+(v('flightno')||'[numéro de vol]')+' du '+dt+', réservation '+(v('pnr')||'[référence]'));
+    L.push(''); L.push('Madame, Monsieur,'); L.push('');
+    L.push('J’étais enregistré(e) sur le vol '+(v('flightno')||'[numéro de vol]')+' de '+r.a[1]+' ('+r.a[0]+') à '+r.b[1]+' ('+r.b[0]+') du '+dt+'. Ce vol '+what+'.');
+    L.push('');
+    L.push('En application des articles 5, 6 et 7 du règlement (CE) n° 261/2004, tels qu’interprétés par la Cour de justice de l’Union européenne (affaires jointes C-402/07 et C-432/07, Sturgeon), j’ai droit à une indemnisation de '+res.amount+' € par passager pour un vol de '+r.km.toLocaleString('fr-FR')+' km'+(n>1?', soit '+total+' € pour les '+n+' passagers de cette réservation'+(v('others')?' ('+v('others')+')':''):'')+'.');
+    if(i.cause==='technical') L.push('Un problème technique ne constitue pas une circonstance extraordinaire au sens de l’article 5, paragraphe 3 (CJUE, C-549/07, Wallentin-Hermann).');
+    if(i.cause==='ownstrike') L.push('Une grève du personnel de la compagnie ne constitue pas une circonstance extraordinaire (CJUE, C-28/20).');
+    if(i.cause==='unknown') L.push('Aucune circonstance extraordinaire ne m’a été indiquée. Si vous entendez en invoquer une, je vous remercie d’en apporter la preuve, ainsi que celle des mesures raisonnables prises pour éviter la perturbation.');
+    L.push('');
+    L.push('Je vous remercie de me verser la somme de '+total+' € par virement dans un délai de 14 jours. Je vous communiquerai mes coordonnées bancaires sur demande, ou via votre formulaire de réclamation.');
+    L.push('À défaut de réponse satisfaisante, je saisirai le médiateur compétent, l’autorité nationale chargée de l’application du règlement et, si nécessaire, la juridiction compétente.');
+    L.push(''); L.push('Pièces jointes : confirmation de réservation, carte(s) d’embarquement'+(i.event!=='delay'?', avis d’annulation ou de refus d’embarquement':'')+'.');
+    L.push(''); L.push('Veuillez agréer, Madame, Monsieur, l’expression de mes salutations distinguées.'); L.push(''); L.push(v('pname')||'[Votre nom]');
+    $('letter').textContent=L.join('\n'); $('letter-out').hidden=false; $('letter').focus();
+  });
+  $('copy').addEventListener('click',function(){ var t=$('letter').textContent; (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){$('copied').textContent='Copié.';},function(){$('copied').textContent='Sélectionnez le texte et copiez-le manuellement.';}); });
+})();
+</script>
+</body>
+</html>
