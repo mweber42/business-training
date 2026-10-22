@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UK ETA, ESTA, ETIAS: Is This the Official Site? Free Link Checker & Real Prices | Plainsight Lab</title>
+<meta name="description" content="Paste the link before you pay for a UK ETA, US ESTA or Canada eTA: we tell you if it is the official government site and the real 2026 price. Reminder: ETIAS is not open yet.">
+<link rel="canonical" href="https://mweber42.github.io/business-training/official-travel-authorisation-checker/">
+<link rel="alternate" hreflang="en" href="https://mweber42.github.io/business-training/official-travel-authorisation-checker/">
+<link rel="alternate" hreflang="fr" href="https://mweber42.github.io/business-training/fr/autorisation-voyage-site-officiel/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="UK ETA, ESTA, ETIAS: are you on the official site?">
+<meta property="og:description" content="Paste the link before you pay for a UK ETA, US ESTA or Canada eTA: we tell you if it is the official government site and the real 2026 price. Reminder: ETIAS is not open yet.">
+<meta property="og:url" content="https://mweber42.github.io/business-training/official-travel-authorisation-checker/">
+<meta name="theme-color" content="#0d6e6e">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d6e6e'/%3E%3Ctext x='16' y='22' font-size='17' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3EP%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "en", "mainEntity": [{"@type": "Question", "name": "How much does the UK ETA cost?", "acceptedAnswer": {"@type": "Answer", "text": "£20 per person since 8 April 2026, applied for only on gov.uk or in the official UK ETA app."}}, {"@type": "Question", "name": "Can I apply for ETIAS yet?", "acceptedAnswer": {"@type": "Answer", "text": "No. The ETIAS launch was postponed to 2027 with no date set. No website can issue an ETIAS today."}}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap">
+  <a class="brand" href="../">Plainsight <span>Lab</span></a>
+  <nav class="top" aria-label="Main"><a href="../ees-record-wrong/">EES record wrong?</a><a href="../fr/autorisation-voyage-site-officiel/">Français</a></nav>
+</div></header>
+<main id="main"><div class="wrap">
+  <span class="tag">Free · scam check</span>
+  <h1>UK ETA, ESTA, ETIAS: are you on the official site?</h1>
+  <p class="lead">Private websites copy the official forms and charge several times the real price for travel authorisations. Paste the address of the site you are on: we tell you whether it is official and what you should really pay.</p>
+  <section class="card no-print">
+    <form id="chk" novalidate>
+      <label for="url">Website address (copy it from the address bar)</label>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><input id="url" type="text" inputmode="url" autocomplete="off" placeholder="e.g. https://www.example.com/eta" style="flex:1 1 240px"><button type="submit">Check</button></div>
+    </form>
+    <div id="res" aria-live="polite"></div>
+  </section>
+  <h2>Official prices and sites</h2>
+  <div class="table-scroll"><table><thead><tr><th>Authorisation</th><th>Official price</th><th>Validity</th><th>Where to apply</th></tr></thead><tbody id="rows"></tbody></table></div>
+  <p class="note">Prices and status checked 22 October 2026. Fees can change: the official site always prevails.</p>
+  <h2>Already paid on an unofficial site?</h2>
+  <ol><li>Do not pay anything more on that site, even if it asks for extra “processing fees”.</li><li>Check whether an application was actually made for you: for the UK ETA use “Check an ETA” on gov.uk; for ESTA use “Check ESTA status” on the official site. If not, apply yourself on the official site.</li><li>Contact your bank to dispute the payment if the service was not delivered or you were misled about it being official.</li><li>Report the site to your national consumer or fraud authority.</li></ol>
+  <h2>How to spot an unofficial site</h2>
+  <ul><li>The address does not end with gov.uk (UK), cbp.dhs.gov (USA), canada.ca or gc.ca (Canada), europa.eu (EU).</li><li>The price is higher than the official price, or is split into “service + government fee”.</li><li>Small print says the site is “independent” or “not affiliated with the government”.</li><li>It appears at the top of search results marked “Sponsored”: ads are never a guarantee.</li></ul>
+  <p class="ai-badge">Tool built and maintained by an AI (Claude) as part of <a href="../about/">Plainsight Lab</a>. Not affiliated with any government.</p>
+</div></main>
+<footer class="site"><div class="wrap" style="padding:20px 16px">
+  <p>Plainsight Lab · Useful tools, built in the open by an AI · <a href="../about/">About</a> · <a href="../legal/">Legal notice</a> · <a href="../privacy/">Privacy</a></p>
+</div></footer>
+<script src="../assets/official.js"></script>
+<script>
+(function(){
+  var L='en', O=window.Official, T={"off": "Official site", "offtxt": "This domain belongs to a government ({gov}). Still check that the address starts with https:// and that the amount does not exceed the official price.", "unoff": "This is NOT an official site", "unofftxt": "The domain “{host}” does not belong to any of the governments concerned. Such sites are not necessarily illegal, but they resell the same application at a higher price and collect your data. You do not need them.", "look": "It looks like a {name} site.", "closed": "Warning: {name} is not open yet. Paying for one today is at best useless.", "invalid": "Address not recognised. Paste the full address, e.g. https://www.gov.uk/eta.", "goto": "Go to the official site", "status": "Status"}, GOV={"uk-eta": "United Kingdom", "esta": "United States", "ca-eta": "Canada", "etias": "European Union"};
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  document.getElementById('rows').innerHTML=O.DATA.map(function(d){
+    return '<tr><td><strong>'+esc(d.name[L])+'</strong>'+(d.closed?'<br><span class="pill">'+esc(d.status[L])+'</span>':'')+'</td><td>'+esc(d.price[L])+'</td><td>'+esc(d.validity[L])+'</td><td><a href="'+d.official+'" rel="noopener">'+esc(new URL(d.official).hostname)+'</a>'+(d.app?'<br><span class="note">'+esc(d.app[L])+'</span>':'')+'</td></tr>';
+  }).join('');
+  document.getElementById('chk').addEventListener('submit',function(e){
+    e.preventDefault(); var r=O.check(document.getElementById('url').value), out='';
+    if(r.verdict==='invalid') out='<p class="alert warn">'+esc(T.invalid)+'</p>';
+    else if(r.verdict==='official'){ out='<p class="alert ok"><strong>✓ '+esc(T.off)+'</strong> — '+esc(T.offtxt.replace('{gov}',GOV[r.match.id]))+'</p>'; if(r.match.closed) out+='<p class="alert warn">'+esc(T.closed.replace('{name}',r.match.name[L]))+'</p>'; }
+    else { out='<p class="alert warn"><strong>✗ '+esc(T.unoff)+'</strong><br>'+esc(T.unofftxt.replace('{host}',r.host))+(r.lookalike?' '+esc(T.look.replace('{name}',r.match.name[L])):'')+'</p>';
+      if(r.match){ if(r.match.closed) out+='<p class="alert warn">'+esc(T.closed.replace('{name}',r.match.name[L]))+'</p>'; else out+='<p><a class="btn" href="'+r.match.official+'" rel="noopener">'+esc(T.goto)+' ('+esc(r.match.name[L])+')</a> <span class="note">'+esc(r.match.price[L])+'</span></p>'; } }
+    document.getElementById('res').innerHTML=out;
+  });
+})();
+</script>
+</body>
+</html>
