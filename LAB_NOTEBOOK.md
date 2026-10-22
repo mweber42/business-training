@@ -58,14 +58,27 @@ Scores 1–5 (Pain, Demand evidence, Competition weakness, Build effort ease, Mo
 - **Risk:** prices change → re-verify monthly; this page must never be wrong on a price.
 - **Monetization idea (not activated):** none on this page — trust is the asset. Possibly later a clearly-labelled travel insurance or eSIM affiliate on a separate page.
 
+## Distribution & SEO actions log
+- 2026-10-22 17:10 — IndexNow submission (Bing, Yandex, Seznam, Naver…) of 9 URLs: HTTP 200. Key file at `/8e75786ba4dfbb546ff753d56a1634e2.txt` (inside the Pages path). Resubmit new/changed URLs via a POST to api.indexnow.org/indexnow (do it from a browser tab opened on api.indexnow.org: same-origin, no CORS issue).
+- Google: needs Search Console (Marine). Until then Google discovers the site only through links.
+- Lesson: every push triggers a Pages deploy and new pushes cancel queued ones; batch commits (≈1 push per 20–30 min) to keep deploys flowing.
+
 ## Waiting on Marine
 - [ ] Install the Claude GitHub App on `mweber42/business-training` (push access refused at 16:40).
 - [ ] Enable GitHub Pages (Settings → Pages → branch `main`, folder `/root`).
 - [ ] Legal notice details: SIRET, contact email (dedicated lab address recommended), postal address to display (domiciliation possible).
 - [ ] Later: cookieless analytics account (e.g. GoatCounter, public stats page so the lab can read it), Google Search Console verification, custom domain (~10 €/yr).
 
+## Assets built on 2026-10-22 (pages)
+EN: `/`, `/ees-record-wrong/`, `/ees-checker-not-ok/`, `/schengen-90-180-calculator/`, `/official-travel-authorisation-checker/`, `/about/`, `/legal/`, `/privacy/`
+FR: `/fr/ees-sortie-non-enregistree/`, `/fr/calculateur-schengen-90-180/`, `/fr/autorisation-voyage-site-officiel/`
+ES: `/es/ees-salida-no-registrada/`, `/es/calculadora-schengen-90-180/`
+Data: `assets/ees-contacts.js` — official EES data controllers + supervisory authorities for 29 countries, extracted from the Commission's JS-only page on 2026-10-22 (re-check quarterly). Letter templates in 7 languages: `assets/ees-letter.js`.
+
 ## Later list
-- French version of EXP-001.
+- UK residents under the Withdrawal Agreement and EES (The Local, Stamped Nomad cover it; consider a per-country document table).
+- Calculator option: mark a period as covered by a residence permit / long-stay visa (excluded from the count).
+- German/Italian/Portuguese landing pages if ES/FR pages get impressions.
 - ETIAS checker at launch.
 - Printable PDF chronology export.
 
@@ -74,4 +87,6 @@ Scores 1–5 (Pain, Demand evidence, Competition weakness, Build effort ease, Mo
 - 2026-10-22 16:39 — Marine installed the GitHub App: push works.
 - 2026-10-22 16:45 — EXP-001 v1 pushed (kit, calculator, legal, privacy, about, sitemap, robots). Browser-tested at 390px: no JS errors; calculator numbers hand-checked (73 used / latest exit 8 Nov / earliest 14-day entry 19 Nov for test data).
 - 2026-10-22 16:50 — Added Not OK diagnostic guide + French landing page.
-- 2026-10-22 17:05 — EXP-002 built and pushed (EN/FR). GitHub Pages not yet reachable (Marine to enable in Settings → Pages).
+- 2026-10-22 17:05 — EXP-002 built and pushed (EN/FR). Pages enabled by Marine shortly after; site live.
+- 2026-10-22 17:20 — Kit upgraded: official authority contacts for 29 countries (extracted via browser from the Commission page), email shortcut, letters in 7 languages. OG share images. IndexNow submitted.
+- 2026-10-22 17:35 — French and Spanish calculator + Spanish EES guide (Latin American visa-exempt travellers are subject to EES; Spanish SERPs likely less crowded).
